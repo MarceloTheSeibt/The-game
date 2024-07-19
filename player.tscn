@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://dubaka086frrj"]
+
+[ext_resource type="Script" path="res://Player.gd" id="1_qm1p0"]
+[ext_resource type="PackedScene" uid="uid://bnlq34geuxnms" path="res://character_body_2d.tscn" id="2_nri55"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m2yb6"]
+size = Vector2(405, 288)
+
+[node name="Player" type="Area2D"]
+script = ExtResource("1_qm1p0")
+metadata/_edit_group_ = true
+
+[node name="player_skeleton" parent="." instance=ExtResource("2_nri55")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 64)
+rotation = -1.5708
+shape = SubResource("RectangleShape2D_m2yb6")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
