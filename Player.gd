@@ -48,16 +48,16 @@ func _process(delta):
 	
 	
 	var arm_left_to_mouse = snapped($arm_left.get_angle_to(mouse_pos), 0.01)
-	var arm_right_to_mouse = snapped($arm_right.get_angle_to(mouse_pos), 0.01)
 	# Snapped serve para arredondar float
 	
 	
 	# Rotaciona os braços, seguindo o mouse
+	# Ambos usam como parâmetro o mesmo braço, por questões de performance e
+	# evita esquisitices causadas por ângulos
 	if arm_left_to_mouse != 0.00:
-		$arm_left.rotate( arm_left_to_mouse)
-
-	if arm_right_to_mouse != 0.00:
+		$arm_left.rotate(arm_left_to_mouse)
 		$arm_right.rotate(arm_left_to_mouse)
+
 		
 	if velocity.x != 0:
 		pass
