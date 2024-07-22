@@ -2,25 +2,31 @@
 
 [ext_resource type="Script" path="res://Player.gd" id="1_qm1p0"]
 [ext_resource type="PackedScene" uid="uid://bnlq34geuxnms" path="res://character_body_2d.tscn" id="2_nri55"]
-[ext_resource type="Texture2D" uid="uid://f2stwt72emrs" path="res://player_sprites/Warlord/player_arm.png" id="2_t40xa"]
+[ext_resource type="Texture2D" uid="uid://f2stwt72emrs" path="res://asset/player_sprites/Warlord/player_arm.png" id="2_t40xa"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m2yb6"]
 size = Vector2(405, 288)
 
 [node name="Player" type="Area2D"]
+scale = Vector2(0.5, 0.5)
 script = ExtResource("1_qm1p0")
 
 [node name="arm_right" type="Sprite2D" parent="."]
-position = Vector2(-61, 66)
+position = Vector2(-57, 67)
+rotation = 1.91986
 texture = ExtResource("2_t40xa")
-offset = Vector2(50, 4)
+offset = Vector2(53, 3)
 
 [node name="player_skeleton" parent="." instance=ExtResource("2_nri55")]
 
 [node name="arm_left" type="Sprite2D" parent="."]
-position = Vector2(61, 66)
+position = Vector2(65, 67)
 texture = ExtResource("2_t40xa")
-offset = Vector2(50, 4)
+offset = Vector2(55, 3)
+
+[node name="gun_point" type="Sprite2D" parent="arm_left"]
+position = Vector2(151, -41)
+offset = Vector2(-60, 42)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false

@@ -1,7 +1,11 @@
 extends Area2D
+# Para que a arma que está segurando saiba a posição do player
+signal arm_left_position(pos: Vector2)
 
 var speed = 200
 var screen_size
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	screen_size = get_viewport_rect().size
@@ -12,6 +16,8 @@ func _process(delta):
 	var velocity = Vector2.ZERO
 	var walk
 	var idle
+	var arm_left_pos = $arm_left.position
+	arm_left_position.emit(arm_left_pos)
 	
 	if Input.is_action_pressed("move_right"):
 		velocity.x += 1
@@ -37,7 +43,6 @@ func _process(delta):
 			$player_skeleton/AnimationPlayer.stop()  # Stop na animação de "walk"
 			idle = true
 		$player_skeleton/AnimationPlayer.play("idle", -1, 1.0)
-	print(velocity)
 		
 		
 		
@@ -56,24 +61,10 @@ func _process(delta):
 	# evita esquisitices causadas por ângulos
 	if arm_left_to_mouse != 0.00:
 		$arm_left.rotate(arm_left_to_mouse)
-		$arm_right.rotate(arm_left_to_mouse)
+		#$arm_right.rotate(arm_left_to_mouse)
 
-		
-	if velocity.x != 0:
-		pass
-		#$player_skeleton/AnimationPlayer.play("walk", -1, 2.0)
-		#$player_skeleton/AnimationPlayer.flip_v = false
-		
-		#if velocity.x < 0:
-			#$player_skeleton/AnimationPlayer.flip_h = true
-		#else:
-			#$player_skeleton/AnimationPlayer.flip_h = false
-	#elif velocity.y != 0:
-		#$player_skeleton/AnimationPlayer.animation = "up"
-		#if velocity.y > 0:
-			#$player_skeleton/AnimationPlayer.flip_v = true
-		#else:
-			#$player_skeleton/AnimationPlayer.flip_v = false
+
+
 
 
 func _on_body_entered(body):

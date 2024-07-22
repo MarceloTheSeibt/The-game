@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://bnlq34geuxnms"]
 
 [ext_resource type="Script" path="res://character_body_2d.gd" id="1_5i1b1"]
-[ext_resource type="Texture2D" uid="uid://dsn2cickcwql8" path="res://player_sprites/Warlord/player_full_exploded.png" id="1_6dsun"]
+[ext_resource type="Texture2D" uid="uid://dsn2cickcwql8" path="res://asset/player_sprites/Warlord/player_full_exploded.png" id="1_6dsun"]
 
 [sub_resource type="Animation" id="Animation_psit3"]
 length = 0.001
@@ -44,6 +44,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_r2jqy"]
 resource_name = "idle"
+length = 1.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -52,9 +53,9 @@ tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.5, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
+"transitions": PackedFloat32Array(1, 3, 6.5),
 "update": 0,
-"values": [Vector2(1, -42), Vector2(1, -49), Vector2(1, -42)]
+"values": [Vector2(1, -42), Vector2(1, -47), Vector2(1, -42)]
 }
 
 [sub_resource type="Animation" id="Animation_clvhc"]
@@ -157,6 +158,7 @@ uv = PackedVector2Array(758, 320, 710, 321, 679, 340, 683, 368, 693, 410, 723, 4
 bones = ["hip", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "hip/leg_left", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "hip/leg_right", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "hip/body", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "hip/body/arm_left", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "hip/body/arm_left/hand_left", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "hip/body/arm_right", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "hip/body/arm_right/hand_right", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "hip/body/head", PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1), "hip/body/head/face", PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1)]
 
 [node name="Skeleton2D" type="Skeleton2D" parent="."]
+visible = false
 position = Vector2(-480, -325)
 
 [node name="hip" type="Bone2D" parent="Skeleton2D"]
