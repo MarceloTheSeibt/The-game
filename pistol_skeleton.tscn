@@ -157,7 +157,7 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(329.43, 122.895)]
+"values": [Vector2(0, -10)]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
@@ -270,7 +270,7 @@ tracks/6/keys = {
 "times": PackedFloat32Array(0, 0.06, 0.25, 0.4),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(329.43, 122.895), Vector2(329.43, 122.895), Vector2(376.245, 29.785), Vector2(420, 150)]
+"values": [Vector2(-10, -65), Vector2(-10, -65), Vector2(50, -150), Vector2(170, -20)]
 }
 tracks/7/type = "value"
 tracks/7/imported = false
@@ -304,36 +304,36 @@ _data = {
 }
 
 [node name="pistol_skeleton" type="Sprite2D"]
-position = Vector2(346, -187)
 scale = Vector2(-1, 1)
+offset = Vector2(-345.515, -187.328)
 script = ExtResource("1_bvb3k")
 
 [node name="muzzle_flash" type="Sprite2D" parent="."]
 visible = false
 modulate = Color(0.925338, 0.925338, 3.08037e-06, 0.545098)
 light_mask = 0
-position = Vector2(-35.625, 138.61)
+position = Vector2(-369.005, -53.205)
 texture = ExtResource("1_bkh6y")
 flip_h = true
 
 [node name="muzzle_smoke" type="AnimatedSprite2D" parent="."]
 modulate = Color(1, 1, 1, 0.627451)
 light_mask = 0
-position = Vector2(-56.27, 143.14)
+position = Vector2(-389.65, -48.675)
 rotation = -1.5708
 scale = Vector2(6.135, 6.135)
 sprite_frames = SubResource("SpriteFrames_la0ci")
 animation = &"shoot"
 
 [node name="shell" type="Sprite2D" parent="."]
-position = Vector2(329.43, 122.895)
+position = Vector2(0, -10)
 scale = Vector2(0.78, 0.7)
 texture = ExtResource("52_nb1ld")
 
 [node name="polygons" type="Node2D" parent="."]
 
 [node name="barrel" type="Polygon2D" parent="polygons"]
-position = Vector2(92, 135)
+position = Vector2(-241.38, -56.815)
 scale = Vector2(3, 1)
 offset = Vector2(-40, -71)
 texture = ExtResource("1_17jfi")
@@ -343,7 +343,7 @@ uv = PackedVector2Array(66, 48, 11, 50, 11, 92, 69, 95)
 bones = ["hip", PackedFloat32Array(0, 0, 0, 0), "hip/slide", PackedFloat32Array(0, 0, 0, 0), "hip/top_bit", PackedFloat32Array(0, 0, 0, 0), "hip/barrel", PackedFloat32Array(1, 1, 1, 1)]
 
 [node name="body" type="Polygon2D" parent="polygons"]
-position = Vector2(324, 232)
+position = Vector2(-9.38, 40.185)
 offset = Vector2(-324, -232)
 texture = ExtResource("1_17jfi")
 skeleton = NodePath("../../Skeleton2D")
@@ -352,7 +352,7 @@ uv = PackedVector2Array(559, 410, 555, 327, 540, 287, 516, 236, 533, 206, 552, 1
 bones = ["hip", PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1), "hip/Bone2D", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)]
 
 [node name="top_bit" type="Polygon2D" parent="polygons"]
-position = Vector2(269, 106)
+position = Vector2(-64.38, -85.815)
 offset = Vector2(-273, -31)
 texture = ExtResource("1_17jfi")
 skeleton = NodePath("../../Skeleton2D")
@@ -361,7 +361,7 @@ uv = PackedVector2Array(232, 20, 231, 47, 312, 46, 310, 17)
 bones = ["hip", PackedFloat32Array(0, 0, 0, 0), "hip/slide", PackedFloat32Array(0, 0, 0, 0), "hip/top_bit", PackedFloat32Array(1, 1, 1, 1)]
 
 [node name="slide" type="Polygon2D" parent="polygons"]
-position = Vector2(303, 135)
+position = Vector2(-30.38, -56.815)
 offset = Vector2(-304, -121)
 texture = ExtResource("1_17jfi")
 skeleton = NodePath("../../Skeleton2D")
@@ -370,9 +370,10 @@ uv = PackedVector2Array(87, 165, 557, 166, 552, 132, 516, 99, 497, 75, 472, 70, 
 bones = ["hip", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "hip/slide", PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1)]
 
 [node name="Skeleton2D" type="Skeleton2D" parent="."]
+visible = false
+position = Vector2(-333.38, -191.815)
 
 [node name="hip" type="Bone2D" parent="Skeleton2D"]
-visible = false
 position = Vector2(286, 187)
 rest = Transform2D(1, 0, 0, 1, 286, 187)
 auto_calculate_length_and_angle = false
@@ -403,7 +404,7 @@ libraries = {
 speed_scale = 1.5
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
-position = Vector2(34.12, 136.465)
+position = Vector2(-292, -54)
 color = Color(1, 0.313726, 0, 1)
 energy = 0.0
 texture = ExtResource("53_iebvw")

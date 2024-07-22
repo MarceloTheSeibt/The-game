@@ -49,19 +49,7 @@ func _process(delta):
 	position += velocity * delta
 	position = position.clamp(Vector2.ZERO + Vector2(200, 300), screen_size - (Vector2(200, 300)))
 	
-	var mouse_pos = get_viewport().get_mouse_position()  # Posição do mouse em relação ao (0, 0) da tela
-	
-	
-	var arm_left_to_mouse = snapped($arm_left.get_angle_to(mouse_pos), 0.01)
-	# Snapped serve para arredondar float
-	
-	
-	# Rotaciona os braços, seguindo o mouse
-	# Ambos usam como parâmetro o mesmo braço, por questões de performance e
-	# evita esquisitices causadas por ângulos
-	if arm_left_to_mouse != 0.00:
-		$arm_left.rotate(arm_left_to_mouse)
-		#$arm_right.rotate(arm_left_to_mouse)
+
 
 
 
