@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://c0pac7l2gdh4s"]
 
-[ext_resource type="PackedScene" uid="uid://cltq33bfa7o72" path="res://pistol_skeleton.tscn" id="1_qtrpf"]
-[ext_resource type="Script" path="res://Pistol.gd" id="1_u2xxq"]
+[ext_resource type="PackedScene" uid="uid://cltq33bfa7o72" path="res://scene/pistol_skeleton.tscn" id="1_qtrpf"]
+[ext_resource type="Script" path="res://script/Pistol.gd" id="1_u2xxq"]
 
 [node name="Pistol" type="Sprite2D"]
 scale = Vector2(0.4, 0.4)
@@ -10,3 +10,5 @@ metadata/_edit_group_ = true
 
 [node name="pistol_skeleton" parent="." instance=ExtResource("1_qtrpf")]
 script = null
+
+[node name="fire_delay" type="Timer" parent="."]

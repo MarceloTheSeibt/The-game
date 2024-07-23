@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://bnlq34geuxnms"]
 
-[ext_resource type="Script" path="res://character_body_2d.gd" id="1_5i1b1"]
-[ext_resource type="Texture2D" uid="uid://dsn2cickcwql8" path="res://asset/player_sprites/Warlord/player_full_exploded.png" id="1_6dsun"]
+[ext_resource type="Script" path="res://script/character_body_2d.gd" id="1_0ojcl"]
+[ext_resource type="Texture2D" uid="uid://dsn2cickcwql8" path="res://asset/player_sprites/Warlord/player_full_exploded.png" id="2_4kvxi"]
 
 [sub_resource type="Animation" id="Animation_psit3"]
 length = 0.001
@@ -107,7 +107,7 @@ _data = {
 
 [node name="player_skeleton" type="CharacterBody2D"]
 motion_mode = 1
-script = ExtResource("1_5i1b1")
+script = ExtResource("1_0ojcl")
 
 [node name="polygons" type="Node2D" parent="."]
 position = Vector2(-480, -325)
@@ -115,7 +115,7 @@ position = Vector2(-480, -325)
 [node name="foot_left" type="Polygon2D" parent="polygons"]
 position = Vector2(524, 529)
 offset = Vector2(-585, -741)
-texture = ExtResource("1_6dsun")
+texture = ExtResource("2_4kvxi")
 skeleton = NodePath("../../Skeleton2D")
 polygon = PackedVector2Array(625, 715, 586, 698, 549, 709, 540, 733, 536, 777, 540, 805, 578, 810, 627, 808, 634, 777)
 uv = PackedVector2Array(625, 715, 586, 698, 549, 709, 540, 733, 536, 777, 540, 805, 578, 810, 627, 808, 634, 777)
@@ -124,7 +124,7 @@ bones = ["hip", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "hip/leg_left", P
 [node name="foot_right" type="Polygon2D" parent="polygons"]
 position = Vector2(432, 539)
 offset = Vector2(-382, -751)
-texture = ExtResource("1_6dsun")
+texture = ExtResource("2_4kvxi")
 skeleton = NodePath("../../Skeleton2D")
 polygon = PackedVector2Array(410, 706, 368, 698, 335, 716, 332, 760, 338, 803, 376, 806, 412, 807, 432, 795, 436, 767)
 uv = PackedVector2Array(410, 706, 368, 698, 335, 716, 332, 760, 338, 803, 376, 806, 412, 807, 432, 795, 436, 767)
@@ -133,7 +133,7 @@ bones = ["hip", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0), "hip/leg_left", P
 [node name="body" type="Polygon2D" parent="polygons"]
 position = Vector2(479, 436)
 offset = Vector2(-484, -560)
-texture = ExtResource("1_6dsun")
+texture = ExtResource("2_4kvxi")
 skeleton = NodePath("../../Skeleton2D")
 polygon = PackedVector2Array(545, 445, 561, 492, 581, 535, 596, 588, 596, 650, 545, 668, 469, 667, 390, 662, 365, 640, 361, 594, 382, 524, 413, 480, 447, 443)
 uv = PackedVector2Array(545, 445, 561, 492, 581, 535, 596, 588, 596, 650, 545, 668, 469, 667, 390, 662, 365, 640, 361, 594, 382, 524, 413, 480, 447, 443)
@@ -142,7 +142,7 @@ bones = ["hip", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "hip/
 [node name="head" type="Polygon2D" parent="polygons"]
 position = Vector2(482, 187)
 offset = Vector2(-482, -187)
-texture = ExtResource("1_6dsun")
+texture = ExtResource("2_4kvxi")
 skeleton = NodePath("../../Skeleton2D")
 polygon = PackedVector2Array(294, 333, 441, 440, 522, 446, 671, 338, 728, 228, 638, 100, 575, 22, 503, 4, 433, 7, 373, 38, 337, 81, 301, 145, 291, 194, 278, 234, 271, 283)
 uv = PackedVector2Array(294, 333, 441, 440, 522, 446, 671, 338, 728, 228, 638, 100, 575, 22, 503, 4, 433, 7, 373, 38, 337, 81, 301, 145, 291, 194, 278, 234, 271, 283)
@@ -151,7 +151,7 @@ bones = ["hip", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
 [node name="face_w_mustache" type="Polygon2D" parent="polygons"]
 position = Vector2(487, 315)
 offset = Vector2(-836, -441)
-texture = ExtResource("1_6dsun")
+texture = ExtResource("2_4kvxi")
 skeleton = NodePath("../../Skeleton2D")
 polygon = PackedVector2Array(758, 320, 710, 321, 679, 340, 683, 368, 693, 410, 723, 446, 762, 468, 801, 484, 854, 488, 917, 486, 952, 446, 985, 407, 987, 353, 970, 331, 934, 318, 822, 322)
 uv = PackedVector2Array(758, 320, 710, 321, 679, 340, 683, 368, 693, 410, 723, 446, 762, 468, 801, 484, 854, 488, 917, 486, 952, 446, 985, 407, 987, 353, 970, 331, 934, 318, 822, 322)

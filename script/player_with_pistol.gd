@@ -1,10 +1,11 @@
 extends Node2D
+@export var bullet_scene: PackedScene
+signal shot()
+
 var pistol_flipped = false 
 
-
 func _ready():
-	pass
-
+	$fire_delay.start()
 
 
 func _process(delta):
@@ -45,4 +46,21 @@ func _process(delta):
 			pistol_flipped = false
 
 
+
+func _on_fire_delay_timeout():
+	$Player/Pistol/pistol_skeleton/AnimationPlayer.play("shoot")
+	var bullet = bullet_scene.instantiate()
+	add_child(bullet)
+	shot.emit(bullet)
+
+
+func _on_pistol_shot(bullet):
+	var pos = $Player/Pistol.get_global_position()
+	var rot = $Player/Pistol.get_global_rotation()
+	var bullet_speed = 500
+	bullet.set_global_position(pos)
+	bullet.set_global_rotation(rot)
+	# Direção da bala
+	var bullet_direction = Vector2(cos(rot) * bullet_speed, sin(rot) * bullet_speed)
+	bullet.apply_central_impulse(bullet_direction)
 

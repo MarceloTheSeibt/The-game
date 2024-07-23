@@ -1,30 +1,30 @@
 [gd_scene load_steps=30 format=3 uid="uid://cltq33bfa7o72"]
 
-[ext_resource type="Texture2D" uid="uid://jqlrj6kji208" path="res://asset/guns_1/pistol_exploded.png" id="1_17jfi"]
-[ext_resource type="Texture2D" uid="uid://qx4i4olghn47" path="res://asset/muzzle_flash/m_5.png" id="1_bkh6y"]
-[ext_resource type="Script" path="res://Pistol.gd" id="1_bvb3k"]
-[ext_resource type="Texture2D" uid="uid://vyph28xgfu0h" path="res://asset/explosion_effects/1/frames/1_1.png" id="2_kqo21"]
-[ext_resource type="Texture2D" uid="uid://b8pvipo3rq07w" path="res://asset/explosion_effects/1/frames/1_2.png" id="3_igg74"]
-[ext_resource type="Texture2D" uid="uid://drkayvt3cmpf2" path="res://asset/explosion_effects/1/frames/1_3.png" id="4_4f38f"]
-[ext_resource type="Texture2D" uid="uid://bfhiuedgh7vh8" path="res://asset/explosion_effects/1/frames/1_4.png" id="5_lqedo"]
-[ext_resource type="Texture2D" uid="uid://d2u22obnbd6e5" path="res://asset/explosion_effects/1/frames/1_5.png" id="6_l14em"]
-[ext_resource type="Texture2D" uid="uid://d0m687fguptid" path="res://asset/explosion_effects/1/frames/1_6.png" id="7_t36c6"]
-[ext_resource type="Texture2D" uid="uid://cunov8ejt613e" path="res://asset/explosion_effects/1/frames/1_7.png" id="8_crthi"]
-[ext_resource type="Texture2D" uid="uid://rmv1hpwtae5o" path="res://asset/explosion_effects/1/frames/1_8.png" id="9_e0lad"]
-[ext_resource type="Texture2D" uid="uid://os5hnvgdr65n" path="res://asset/explosion_effects/1/frames/1_9.png" id="10_88gr7"]
-[ext_resource type="Texture2D" uid="uid://clpj5iow7bsw3" path="res://asset/explosion_effects/1/frames/1_10.png" id="11_py87v"]
-[ext_resource type="Texture2D" uid="uid://dhuxmdq83p1xe" path="res://asset/explosion_effects/1/frames/1_11.png" id="12_hmx64"]
-[ext_resource type="Texture2D" uid="uid://h82agygdywg8" path="res://asset/explosion_effects/1/frames/1_12.png" id="13_3mlny"]
-[ext_resource type="Texture2D" uid="uid://bkrfwbgmovibf" path="res://asset/explosion_effects/1/frames/1_13.png" id="14_k7yoe"]
-[ext_resource type="Texture2D" uid="uid://ccct1vhf7duec" path="res://asset/explosion_effects/1/frames/1_14.png" id="15_7xvyp"]
-[ext_resource type="Texture2D" uid="uid://caylmuin1mm4e" path="res://asset/explosion_effects/1/frames/1_15.png" id="16_vc40y"]
-[ext_resource type="Texture2D" uid="uid://dowfu7qpoko8x" path="res://asset/explosion_effects/1/frames/1_16.png" id="17_hhvdd"]
-[ext_resource type="Texture2D" uid="uid://lqgvmmy7dm0" path="res://asset/explosion_effects/1/frames/1_17.png" id="18_prgpf"]
-[ext_resource type="Texture2D" uid="uid://diugdyqkwp810" path="res://asset/explosion_effects/1/frames/1_18.png" id="19_7j6ya"]
-[ext_resource type="Texture2D" uid="uid://d35x7of360oaj" path="res://asset/explosion_effects/1/frames/1_19.png" id="20_iwap0"]
-[ext_resource type="Texture2D" uid="uid://dcx6g8d05kr4g" path="res://asset/explosion_effects/1/frames/1_20.png" id="21_os08c"]
-[ext_resource type="Texture2D" uid="uid://djh12j12nqlnq" path="res://asset/guns_1/pistol_shell.png" id="52_nb1ld"]
-[ext_resource type="Texture2D" uid="uid://ckfsujeysq37d" path="res://asset/lighting/spot.png" id="53_iebvw"]
+[ext_resource type="Script" path="res://script/Pistol.gd" id="1_kvf2n"]
+[ext_resource type="Texture2D" uid="uid://qx4i4olghn47" path="res://asset/muzzle_flash/m_5.png" id="2_x48oc"]
+[ext_resource type="Texture2D" uid="uid://vyph28xgfu0h" path="res://asset/explosion_effects/1/frames/1_1.png" id="3_rkxvn"]
+[ext_resource type="Texture2D" uid="uid://b8pvipo3rq07w" path="res://asset/explosion_effects/1/frames/1_2.png" id="4_w1tg7"]
+[ext_resource type="Texture2D" uid="uid://drkayvt3cmpf2" path="res://asset/explosion_effects/1/frames/1_3.png" id="5_l4sy0"]
+[ext_resource type="Texture2D" uid="uid://bfhiuedgh7vh8" path="res://asset/explosion_effects/1/frames/1_4.png" id="6_tjcgs"]
+[ext_resource type="Texture2D" uid="uid://d2u22obnbd6e5" path="res://asset/explosion_effects/1/frames/1_5.png" id="7_qst6m"]
+[ext_resource type="Texture2D" uid="uid://d0m687fguptid" path="res://asset/explosion_effects/1/frames/1_6.png" id="8_hx2mn"]
+[ext_resource type="Texture2D" uid="uid://cunov8ejt613e" path="res://asset/explosion_effects/1/frames/1_7.png" id="9_a7l6j"]
+[ext_resource type="Texture2D" uid="uid://rmv1hpwtae5o" path="res://asset/explosion_effects/1/frames/1_8.png" id="10_05yop"]
+[ext_resource type="Texture2D" uid="uid://os5hnvgdr65n" path="res://asset/explosion_effects/1/frames/1_9.png" id="11_cqexu"]
+[ext_resource type="Texture2D" uid="uid://clpj5iow7bsw3" path="res://asset/explosion_effects/1/frames/1_10.png" id="12_k3jpt"]
+[ext_resource type="Texture2D" uid="uid://dhuxmdq83p1xe" path="res://asset/explosion_effects/1/frames/1_11.png" id="13_nny2o"]
+[ext_resource type="Texture2D" uid="uid://h82agygdywg8" path="res://asset/explosion_effects/1/frames/1_12.png" id="14_3lxgi"]
+[ext_resource type="Texture2D" uid="uid://bkrfwbgmovibf" path="res://asset/explosion_effects/1/frames/1_13.png" id="15_0sffn"]
+[ext_resource type="Texture2D" uid="uid://ccct1vhf7duec" path="res://asset/explosion_effects/1/frames/1_14.png" id="16_2it8b"]
+[ext_resource type="Texture2D" uid="uid://caylmuin1mm4e" path="res://asset/explosion_effects/1/frames/1_15.png" id="17_64a51"]
+[ext_resource type="Texture2D" uid="uid://dowfu7qpoko8x" path="res://asset/explosion_effects/1/frames/1_16.png" id="18_xsx35"]
+[ext_resource type="Texture2D" uid="uid://lqgvmmy7dm0" path="res://asset/explosion_effects/1/frames/1_17.png" id="19_vpwn0"]
+[ext_resource type="Texture2D" uid="uid://diugdyqkwp810" path="res://asset/explosion_effects/1/frames/1_18.png" id="20_g0hnv"]
+[ext_resource type="Texture2D" uid="uid://d35x7of360oaj" path="res://asset/explosion_effects/1/frames/1_19.png" id="21_p2nb1"]
+[ext_resource type="Texture2D" uid="uid://dcx6g8d05kr4g" path="res://asset/explosion_effects/1/frames/1_20.png" id="22_pn2rt"]
+[ext_resource type="Texture2D" uid="uid://djh12j12nqlnq" path="res://asset/guns_1/pistol_shell.png" id="23_xx3bp"]
+[ext_resource type="Texture2D" uid="uid://jqlrj6kji208" path="res://asset/guns_1/pistol_exploded.png" id="24_1eoj1"]
+[ext_resource type="Texture2D" uid="uid://ckfsujeysq37d" path="res://asset/lighting/spot.png" id="25_la106"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_la0ci"]
 animations = [{
@@ -33,64 +33,64 @@ animations = [{
 "texture": null
 }, {
 "duration": 1.0,
-"texture": ExtResource("2_kqo21")
+"texture": ExtResource("3_rkxvn")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_igg74")
+"texture": ExtResource("4_w1tg7")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_4f38f")
+"texture": ExtResource("5_l4sy0")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_lqedo")
+"texture": ExtResource("6_tjcgs")
 }, {
 "duration": 1.0,
-"texture": ExtResource("6_l14em")
+"texture": ExtResource("7_qst6m")
 }, {
 "duration": 1.0,
-"texture": ExtResource("7_t36c6")
+"texture": ExtResource("8_hx2mn")
 }, {
 "duration": 1.0,
-"texture": ExtResource("8_crthi")
+"texture": ExtResource("9_a7l6j")
 }, {
 "duration": 1.0,
-"texture": ExtResource("9_e0lad")
+"texture": ExtResource("10_05yop")
 }, {
 "duration": 1.0,
-"texture": ExtResource("10_88gr7")
+"texture": ExtResource("11_cqexu")
 }, {
 "duration": 1.0,
-"texture": ExtResource("11_py87v")
+"texture": ExtResource("12_k3jpt")
 }, {
 "duration": 1.0,
-"texture": ExtResource("12_hmx64")
+"texture": ExtResource("13_nny2o")
 }, {
 "duration": 1.0,
-"texture": ExtResource("13_3mlny")
+"texture": ExtResource("14_3lxgi")
 }, {
 "duration": 1.0,
-"texture": ExtResource("14_k7yoe")
+"texture": ExtResource("15_0sffn")
 }, {
 "duration": 1.0,
-"texture": ExtResource("15_7xvyp")
+"texture": ExtResource("16_2it8b")
 }, {
 "duration": 1.0,
-"texture": ExtResource("16_vc40y")
+"texture": ExtResource("17_64a51")
 }, {
 "duration": 1.0,
-"texture": ExtResource("17_hhvdd")
+"texture": ExtResource("18_xsx35")
 }, {
 "duration": 1.0,
-"texture": ExtResource("18_prgpf")
+"texture": ExtResource("19_vpwn0")
 }, {
 "duration": 1.0,
-"texture": ExtResource("19_7j6ya")
+"texture": ExtResource("20_g0hnv")
 }, {
 "duration": 1.0,
-"texture": ExtResource("20_iwap0")
+"texture": ExtResource("21_p2nb1")
 }, {
 "duration": 1.0,
-"texture": ExtResource("21_os08c")
+"texture": ExtResource("22_pn2rt")
 }],
 "loop": true,
 "name": &"shoot",
@@ -306,14 +306,14 @@ _data = {
 [node name="pistol_skeleton" type="Sprite2D"]
 scale = Vector2(-1, 1)
 offset = Vector2(-345.515, -187.328)
-script = ExtResource("1_bvb3k")
+script = ExtResource("1_kvf2n")
 
 [node name="muzzle_flash" type="Sprite2D" parent="."]
 visible = false
 modulate = Color(0.925338, 0.925338, 3.08037e-06, 0.545098)
 light_mask = 0
 position = Vector2(-369.005, -53.205)
-texture = ExtResource("1_bkh6y")
+texture = ExtResource("2_x48oc")
 flip_h = true
 
 [node name="muzzle_smoke" type="AnimatedSprite2D" parent="."]
@@ -328,7 +328,7 @@ animation = &"shoot"
 [node name="shell" type="Sprite2D" parent="."]
 position = Vector2(0, -10)
 scale = Vector2(0.78, 0.7)
-texture = ExtResource("52_nb1ld")
+texture = ExtResource("23_xx3bp")
 
 [node name="polygons" type="Node2D" parent="."]
 
@@ -336,7 +336,7 @@ texture = ExtResource("52_nb1ld")
 position = Vector2(-241.38, -56.815)
 scale = Vector2(3, 1)
 offset = Vector2(-40, -71)
-texture = ExtResource("1_17jfi")
+texture = ExtResource("24_1eoj1")
 skeleton = NodePath("../../Skeleton2D")
 polygon = PackedVector2Array(66, 48, 11, 50, 11, 92, 69, 95)
 uv = PackedVector2Array(66, 48, 11, 50, 11, 92, 69, 95)
@@ -345,7 +345,7 @@ bones = ["hip", PackedFloat32Array(0, 0, 0, 0), "hip/slide", PackedFloat32Array(
 [node name="body" type="Polygon2D" parent="polygons"]
 position = Vector2(-9.38, 40.185)
 offset = Vector2(-324, -232)
-texture = ExtResource("1_17jfi")
+texture = ExtResource("24_1eoj1")
 skeleton = NodePath("../../Skeleton2D")
 polygon = PackedVector2Array(559, 410, 555, 327, 540, 287, 516, 236, 533, 206, 552, 183, 532, 165, 82, 164, 82, 190, 101, 209, 215, 209, 225, 238, 244, 280, 265, 291, 370, 289, 384, 332, 388, 362, 390, 402, 390, 420)
 uv = PackedVector2Array(559, 410, 555, 327, 540, 287, 516, 236, 533, 206, 552, 183, 532, 165, 82, 164, 82, 190, 101, 209, 215, 209, 225, 238, 244, 280, 265, 291, 370, 289, 384, 332, 388, 362, 390, 402, 390, 420)
@@ -354,7 +354,7 @@ bones = ["hip", PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
 [node name="top_bit" type="Polygon2D" parent="polygons"]
 position = Vector2(-64.38, -85.815)
 offset = Vector2(-273, -31)
-texture = ExtResource("1_17jfi")
+texture = ExtResource("24_1eoj1")
 skeleton = NodePath("../../Skeleton2D")
 polygon = PackedVector2Array(232, 20, 231, 47, 312, 46, 310, 17)
 uv = PackedVector2Array(232, 20, 231, 47, 312, 46, 310, 17)
@@ -363,7 +363,7 @@ bones = ["hip", PackedFloat32Array(0, 0, 0, 0), "hip/slide", PackedFloat32Array(
 [node name="slide" type="Polygon2D" parent="polygons"]
 position = Vector2(-30.38, -56.815)
 offset = Vector2(-304, -121)
-texture = ExtResource("1_17jfi")
+texture = ExtResource("24_1eoj1")
 skeleton = NodePath("../../Skeleton2D")
 polygon = PackedVector2Array(87, 165, 557, 166, 552, 132, 516, 99, 497, 75, 472, 70, 453, 62, 435, 69, 421, 82, 128, 80, 106, 60, 88, 63, 77, 96, 75, 128, 75, 147)
 uv = PackedVector2Array(87, 165, 557, 166, 552, 132, 516, 99, 497, 75, 472, 70, 453, 62, 435, 69, 421, 82, 128, 80, 106, 60, 88, 63, 77, 96, 75, 128, 75, 147)
@@ -407,5 +407,5 @@ speed_scale = 1.5
 position = Vector2(-292, -54)
 color = Color(1, 0.313726, 0, 1)
 energy = 0.0
-texture = ExtResource("53_iebvw")
+texture = ExtResource("25_la106")
 texture_scale = 3.69
