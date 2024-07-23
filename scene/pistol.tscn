@@ -12,3 +12,6 @@ metadata/_edit_group_ = true
 script = null
 
 [node name="fire_delay" type="Timer" parent="."]
+
+[node name="bullet_point" type="Sprite2D" parent="."]
+position = Vector2(272.5, -55)

@@ -15,6 +15,7 @@ bullet_scene = ExtResource("2_6db16")
 position = Vector2(210, 14)
 
 [node name="fire_delay" type="Timer" parent="."]
+wait_time = 0.5
 
 [connection signal="shot" from="." to="." method="_on_pistol_shot"]
 [connection signal="timeout" from="fire_delay" to="." method="_on_fire_delay_timeout"]
