@@ -8,6 +8,8 @@ radius = 24.0
 height = 148.0
 
 [node name="pistol_bullet" type="RigidBody2D" groups=["bullets"]]
+collision_layer = 524
+collision_mask = 524
 mass = 0.01
 gravity_scale = 0.0
 script = ExtResource("1_bctfl")
@@ -21,3 +23,13 @@ position = Vector2(-1, 0)
 rotation = 1.5708
 scale = Vector2(0.075, 0.075)
 shape = SubResource("CapsuleShape2D_nbdah")
+
+[node name="Despawn_timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="Change_layer_timer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[connection signal="timeout" from="Despawn_timer" to="." method="_on_despawn_timer_timeout"]
+[connection signal="timeout" from="Change_layer_timer" to="." method="_on_change_layer_timer_timeout"]

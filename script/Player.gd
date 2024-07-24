@@ -10,6 +10,7 @@ var screen_size
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	screen_size = get_viewport_rect().size
+	position = Vector2(800, 500)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -17,8 +18,13 @@ func _process(delta):
 	var velocity = Vector2.ZERO
 	var walk
 	var idle
-	var arm_left_pos = $arm_left.position
+	var arm_left_pos = $arm_left.position  # Posição relativa
 	arm_left_position.emit(arm_left_pos)
+	
+	# Posição absoluta
+	$arm_left.set_global_position($player_skeleton/Skeleton2D/hip/body/arm_left.get_global_position())
+	$arm_right.set_global_position($player_skeleton/Skeleton2D/hip/body/arm_right.get_global_position())
+	
 	
 	if Input.is_action_pressed("move_right"):
 		velocity.x += 1
@@ -48,13 +54,9 @@ func _process(delta):
 		
 		
 	position += velocity * delta
-	position = position.clamp(Vector2.ZERO + Vector2(200, 300), screen_size - (Vector2(200, 300)))
 	
 	# Este signal faz o player avisar a sua posição para o mob a cada frame
-	player_position.emit(position)
-
-
-
+	player_position.emit($player_skeleton.get_global_position())
 
 
 func _on_body_entered(body):

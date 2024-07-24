@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bnlq34geuxnms"]
+[gd_scene load_steps=8 format=3 uid="uid://bnlq34geuxnms"]
 
 [ext_resource type="Script" path="res://script/character_body_2d.gd" id="1_0ojcl"]
 [ext_resource type="Texture2D" uid="uid://dsn2cickcwql8" path="res://asset/player_sprites/Warlord/player_full_exploded.png" id="2_4kvxi"]
@@ -105,8 +105,15 @@ _data = {
 "walk": SubResource("Animation_clvhc")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ftysc"]
+size = Vector2(405, 288)
+
 [node name="player_skeleton" type="CharacterBody2D"]
-motion_mode = 1
+collision_layer = 2
+collision_mask = 2
+floor_stop_on_slope = false
+floor_constant_speed = true
+floor_block_on_wall = false
 script = ExtResource("1_0ojcl")
 
 [node name="polygons" type="Node2D" parent="."]
@@ -158,7 +165,6 @@ uv = PackedVector2Array(758, 320, 710, 321, 679, 340, 683, 368, 693, 410, 723, 4
 bones = ["hip", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "hip/leg_left", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "hip/leg_right", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "hip/body", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "hip/body/arm_left", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "hip/body/arm_left/hand_left", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "hip/body/arm_right", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "hip/body/arm_right/hand_right", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "hip/body/head", PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1), "hip/body/head/face", PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1)]
 
 [node name="Skeleton2D" type="Skeleton2D" parent="."]
-visible = false
 position = Vector2(-480, -325)
 
 [node name="hip" type="Bone2D" parent="Skeleton2D"]
@@ -217,7 +223,21 @@ auto_calculate_length_and_angle = false
 length = 25.216
 bone_angle = 0.0
 
+[node name="arm_left" type="Bone2D" parent="Skeleton2D/hip/body"]
+position = Vector2(60, -88)
+rest = Transform2D(1, 0, 0, 1, 60, -88)
+
+[node name="arm_right" type="Bone2D" parent="Skeleton2D/hip/body"]
+position = Vector2(-60, -88)
+rest = Transform2D(1, 0, 0, 1, -60, -88)
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_8eat7")
 }
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(0, 64)
+rotation = -1.5708
+shape = SubResource("RectangleShape2D_ftysc")

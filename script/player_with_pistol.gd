@@ -3,12 +3,16 @@ extends Node2D
 signal shot
 
 var pistol_flipped = false 
+# Como não dá pra declarar delta, essa variável serve pra apontar para delta,
+# pois têm funções que precisam dela
+var deltaN  
 
 func _ready():
 	$fire_delay.start()
 
-
 func _process(delta):
+	deltaN = delta
+
 	var mouse_pos = get_viewport().get_mouse_position()  # Posição do mouse em relação ao (0, 0) da tela
 	
 	
@@ -56,11 +60,11 @@ func _on_fire_delay_timeout():
 func _on_pistol_shot(bullet):
 	var pos = $Player/Pistol/bullet_point.get_global_position()
 	var rot = $Player/Pistol/bullet_point.get_global_rotation()
-	var bullet_speed = 5000
+	var bullet_speed = 500000
 	bullet.set_global_position(pos)
 	bullet.set_global_rotation(rot)
 	# Direção da bala
 	var bullet_direction = Vector2(cos(rot), sin(rot))
-	bullet.apply_central_impulse(bullet_direction * bullet_speed) 
+	bullet.apply_central_impulse(bullet_direction * bullet_speed * deltaN) 
 
 

@@ -1,16 +1,19 @@
-[gd_scene load_steps=4 format=3 uid="uid://xadsabt7dyq4"]
+[gd_scene load_steps=5 format=3 uid="uid://xadsabt7dyq4"]
 
 [ext_resource type="Script" path="res://script/main.gd" id="1_i7a4b"]
 [ext_resource type="PackedScene" uid="uid://c1tfvp3b4m80s" path="res://scene/player_with_pistol.tscn" id="2_jhe8e"]
+[ext_resource type="PackedScene" uid="uid://bci2jssjnyyhi" path="res://scene/room_test.tscn" id="3_2ohop"]
 [ext_resource type="PackedScene" uid="uid://dnlhvjb4dsbqm" path="res://scene/mob_zombie.tscn" id="3_anpxf"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_i7a4b")
 mob_zombie_scene = ExtResource("3_anpxf")
 
-[node name="Player_with_pistol" parent="." instance=ExtResource("2_jhe8e")]
-
 [node name="Zombie_spawn_timer" type="Timer" parent="."]
 one_shot = true
+
+[node name="StaticBody2D" parent="." instance=ExtResource("3_2ohop")]
+
+[node name="Player_with_pistol" parent="." instance=ExtResource("2_jhe8e")]
 
 [connection signal="timeout" from="Zombie_spawn_timer" to="." method="_on_zombies_spawn_timer_timeout"]

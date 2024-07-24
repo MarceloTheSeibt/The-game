@@ -305,8 +305,8 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8a8yk"]
-radius = 177.0
-height = 514.0
+radius = 90.0
+height = 420.0
 
 [sub_resource type="Animation" id="Animation_n70nf"]
 length = 0.001
@@ -411,33 +411,6 @@ tracks/4/keys = {
 "values": [0, 1]
 }
 
-[sub_resource type="Animation" id="Animation_mjqt0"]
-length = 0.4
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1, 0.133333, 0.166667, 0.2, 0.233333, 0.266667, 0.3, 0.333333, 0.366667),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("AnimatedSprite2D:animation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": ["hurt"]
-}
-
 [sub_resource type="Animation" id="Animation_7x34i"]
 length = 1.05882
 loop_mode = 1
@@ -498,13 +471,18 @@ tracks/1/keys = {
 _data = {
 "RESET": SubResource("Animation_n70nf"),
 "dying": SubResource("Animation_dj2ud"),
-"hurt": SubResource("Animation_mjqt0"),
 "idle": SubResource("Animation_7x34i"),
 "walk": SubResource("Animation_brtw4")
 }
 
-[node name="mob_zombie" type="Area2D"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vn4cv"]
+radius = 180.0
+height = 533.333
+
+[node name="mob_zombie" type="CharacterBody2D"]
 scale = Vector2(0.3, 0.3)
+collision_layer = 4
+collision_mask = 4
 script = ExtResource("1_nkb4c")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -512,8 +490,9 @@ sprite_frames = SubResource("SpriteFrames_bc3lr")
 animation = &"idle"
 flip_h = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(17, 24)
+[node name="World_hitbox" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(16.6667, 36.6667)
 shape = SubResource("CapsuleShape2D_8a8yk")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -530,6 +509,14 @@ flip_h = true
 wait_time = 0.5
 one_shot = true
 
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 4
+
+[node name="Shot_hitbox" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(13.3333, 40)
+shape = SubResource("CapsuleShape2D_vn4cv")
+
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_dying_animation_finish"]
 [connection signal="timeout" from="Stun_timer" to="." method="_on_stun_timer_timeout"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_body_entered"]
