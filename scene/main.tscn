@@ -10,7 +10,7 @@ mob_zombie_scene = ExtResource("3_anpxf")
 
 [node name="Player_with_pistol" parent="." instance=ExtResource("2_jhe8e")]
 
-[node name="zombie_spawn_timer" type="Timer" parent="."]
+[node name="Zombie_spawn_timer" type="Timer" parent="."]
 one_shot = true
 
-[connection signal="timeout" from="zombie_spawn_timer" to="." method="_on_zombies_spawn_timer_timeout"]
+[connection signal="timeout" from="Zombie_spawn_timer" to="." method="_on_zombies_spawn_timer_timeout"]

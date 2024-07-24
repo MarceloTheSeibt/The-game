@@ -1,8 +1,9 @@
 extends Area2D
 # Para que a arma que está segurando saiba a posição do player
-signal arm_left_position(pos: Vector2)
+signal arm_left_position
+signal player_position
 
-var speed = 200
+var speed = 275
 var screen_size
 
 
@@ -49,7 +50,8 @@ func _process(delta):
 	position += velocity * delta
 	position = position.clamp(Vector2.ZERO + Vector2(200, 300), screen_size - (Vector2(200, 300)))
 	
-
+	# Este signal faz o player avisar a sua posição para o mob a cada frame
+	player_position.emit(position)
 
 
 

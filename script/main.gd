@@ -4,7 +4,7 @@ extends Node
 var zombie_scene
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$zombie_spawn_timer.start()
+	$Zombie_spawn_timer.start()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -21,5 +21,4 @@ func _on_zombies_spawn_timer_timeout():
 	zombie.mob_death.connect(self._on_mob_death)
 
 func _on_mob_death():
-	print("l")
-	$zombie_spawn_timer.start()
+	$Zombie_spawn_timer.start()

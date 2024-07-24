@@ -390,6 +390,9 @@ bone_angle = -90.0
 [node name="top_bit" type="Bone2D" parent="Skeleton2D/hip"]
 position = Vector2(-24, -81)
 rest = Transform2D(1, 0, 0, 1, -24, -81)
+auto_calculate_length_and_angle = false
+length = 80.514
+bone_angle = 0.0
 
 [node name="barrel" type="Bone2D" parent="Skeleton2D/hip"]
 rest = Transform2D(1, 0, 0, 1, 0, 0)
