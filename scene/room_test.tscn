@@ -20,54 +20,49 @@ position = Vector2(906, 535)
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("2_h7twx")
 
-[node name="player_boundaries" type="CollisionPolygon2D" parent="."]
+[node name="Walk_boundaries" type="CollisionPolygon2D" parent="."]
 visible = false
 position = Vector2(400, 468)
 build_mode = 1
 polygon = PackedVector2Array(85, -242, 971, -251, 1079, 464, -37, 474)
 
-[node name="wall_1" type="CollisionPolygon2D" parent="."]
-visible = false
-polygon = PackedVector2Array(1466, -31, 1660, 965, 1495, 935, 1377, 185)
+[node name="Wall_1" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(1466, -31, 1514, 239, 1400, 331, 1377, 185)
 
-[node name="wall_5" type="CollisionPolygon2D" parent="."]
-visible = false
+[node name="Wall_5" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(1331, -121, 1682, 6, 1628, 245, 1139, 131)
 
-[node name="wall_6" type="CollisionPolygon2D" parent="."]
-visible = false
+[node name="Wall_6" type="CollisionPolygon2D" parent="."]
 position = Vector2(-1194, 1010)
 polygon = PackedVector2Array(1465, -144, 1618, 28, 1629, 196, 1215, -33)
 
-[node name="wall_7" type="CollisionPolygon2D" parent="."]
-visible = false
+[node name="Wall_7" type="CollisionPolygon2D" parent="."]
 position = Vector2(-1175, -20)
 polygon = PackedVector2Array(1715, -114, 1735, 175, 1559, 272, 1338, -63)
 
-[node name="wall_8" type="CollisionPolygon2D" parent="."]
-visible = false
+[node name="Wall_8" type="CollisionPolygon2D" parent="."]
 position = Vector2(-59, 1037)
 polygon = PackedVector2Array(1645, -216, 1924, -27, 1422, 162, 1511, -37)
 
-[node name="wall_2" type="CollisionPolygon2D" parent="."]
-visible = false
+[node name="Wall_2" type="CollisionPolygon2D" parent="."]
 position = Vector2(-540, -62)
 polygon = PackedVector2Array(930, 6, 1019, 72, 1091, 152, 1116, 279, 1017, 266)
 
-[node name="wall_9" type="CollisionPolygon2D" parent="."]
-visible = false
+[node name="Wall_9" type="CollisionPolygon2D" parent="."]
 position = Vector2(-301, -50)
 polygon = PackedVector2Array(987, -13, 1767, -18, 1669, 253, 1017, 266)
 
-[node name="wall_3" type="CollisionPolygon2D" parent="."]
-visible = false
+[node name="Wall_3" type="CollisionPolygon2D" parent="."]
 position = Vector2(-807, 483)
 polygon = PackedVector2Array(1197, -545, 1286, -290, 1156, 453, 949, 532)
 
-[node name="wall_4" type="CollisionPolygon2D" parent="."]
-visible = false
+[node name="Wall_4" type="CollisionPolygon2D" parent="."]
 position = Vector2(-490, 567)
 polygon = PackedVector2Array(2149, 376, 2163, 539, 773, 556, 650, 391)
+
+[node name="Wall_10" type="CollisionPolygon2D" parent="."]
+position = Vector2(44, 433)
+polygon = PackedVector2Array(1463, -33, 1669, 628, 1484, 725, 1389, 132)
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 position = Vector2(1494.78, 426)
