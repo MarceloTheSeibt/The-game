@@ -12,11 +12,7 @@ func _ready():
 
 func _process(delta):
 	deltaN = delta
-
-	var mouse_pos = get_viewport().get_mouse_position()  # Posição do mouse em relação ao (0, 0) da tela
-	
-	
-	var arm_left_to_mouse = snapped($Player/arm_left.get_angle_to(mouse_pos), 0.01)
+	var arm_left_to_mouse = snapped($Player/arm_left.get_angle_to(get_global_mouse_position()), 0.01)
 	# Snapped serve para arredondar float
 	
 	

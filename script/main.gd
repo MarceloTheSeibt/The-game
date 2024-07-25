@@ -18,6 +18,7 @@ func _on_zombies_spawn_timer_timeout():
 	# Conexão do signal do mob_zombie com o main via código, pois cada mob é
 	# instanciado durante o tempo de execução, não antes.
 	var zombie = get_node("mob_zombie")
+	zombie.set_modulate(Color("#505050"))
 	zombie.mob_death.connect(self._on_mob_death)
 
 func _on_mob_death():

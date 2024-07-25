@@ -47,6 +47,7 @@ func _on_body_entered(body):
 	# Se morrer:
 	if health <= 0:
 		$AnimatedSprite2D.stop()
+		$LightOccluder2D.visible = false
 		$AnimationPlayer.play("dying")
 		$Area2D/Shot_hitbox.set_deferred("disabled", true)
 		$World_hitbox.set_deferred("disabled", true)
