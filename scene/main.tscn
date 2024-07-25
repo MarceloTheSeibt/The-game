@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://bci2jssjnyyhi" path="res://scene/room_test.tscn" id="3_2ohop"]
 [ext_resource type="PackedScene" uid="uid://dnlhvjb4dsbqm" path="res://scene/mob_zombie.tscn" id="3_anpxf"]
 [ext_resource type="Texture2D" uid="uid://7jw8n3jpeg2g" path="res://asset/e21ccf29fe5611da0f5b7c59a30220c8.jpg" id="3_ub3s3"]
-[ext_resource type="Script" path="res://scene/Camera2D.gd" id="5_sj1dq"]
+[ext_resource type="Script" path="res://script/Camera2D.gd" id="5_sj1dq"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_i7a4b")

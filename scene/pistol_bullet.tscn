@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://c4rpku6ibinv0"]
 
-[ext_resource type="Script" path="res://scene/pistol_bullet.gd" id="1_bctfl"]
+[ext_resource type="Script" path="res://script/pistol_bullet.gd" id="1_43hcf"]
 [ext_resource type="Texture2D" uid="uid://jelrtvm2avlv" path="res://asset/guns_1/bullet.png" id="1_oc18s"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nbdah"]
@@ -12,7 +12,7 @@ collision_layer = 524
 collision_mask = 524
 mass = 0.01
 gravity_scale = 0.0
-script = ExtResource("1_bctfl")
+script = ExtResource("1_43hcf")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.015, 0.015)
