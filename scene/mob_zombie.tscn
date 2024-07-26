@@ -310,7 +310,7 @@ animations = [{
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8a8yk"]
 radius = 90.0
-height = 420.0
+height = 186.667
 
 [sub_resource type="Animation" id="Animation_n70nf"]
 length = 0.001
@@ -665,6 +665,8 @@ _data = {
 }
 
 [node name="mob_zombie" type="CharacterBody2D"]
+modulate = Color(0.384314, 0, 0, 1)
+light_mask = 513
 scale = Vector2(0.3, 0.3)
 collision_layer = 2
 collision_mask = 2
@@ -685,8 +687,7 @@ animation = &"dying"
 flip_h = true
 
 [node name="World_hitbox" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2(16.6667, 36.6667)
+position = Vector2(-53.3333, 90)
 shape = SubResource("CapsuleShape2D_8a8yk")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -703,6 +704,9 @@ flip_h = true
 wait_time = 0.5
 one_shot = true
 
+[node name="Reenable_world_hitbox_timer" type="Timer" parent="."]
+wait_time = 3.0
+
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 4
 collision_mask = 4
@@ -718,6 +722,8 @@ scale = Vector2(0.85, 0.85)
 occluder = SubResource("OccluderPolygon2D_mn5tj")
 
 [node name="zombie_skeleton" parent="." instance=ExtResource("72_b25gj")]
+light_mask = 513
+visibility_layer = 513
 position = Vector2(13.945, 80.005)
 scale = Vector2(-1, 1)
 
@@ -729,8 +735,13 @@ libraries = {
 [node name="Crawl_timer" type="Timer" parent="zombie_skeleton"]
 one_shot = true
 
+[node name="Hit_highlight_timer" type="Timer" parent="."]
+wait_time = 0.3
+
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_dying_animation_finish"]
 [connection signal="timeout" from="Stun_timer" to="." method="_on_stun_timer_timeout"]
+[connection signal="timeout" from="Reenable_world_hitbox_timer" to="." method="_on_reenable_world_hitbox_timer_timeout"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_body_entered"]
 [connection signal="animation_finished" from="zombie_skeleton/AnimationPlayer2" to="." method="_on_animation_player_2_animation_finished"]
 [connection signal="timeout" from="zombie_skeleton/Crawl_timer" to="." method="_on_crawl_timer_timeout"]
+[connection signal="timeout" from="Hit_highlight_timer" to="." method="_on_hit_highlight_timer_timeout"]

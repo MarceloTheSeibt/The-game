@@ -21,7 +21,6 @@ func _physics_process(delta):
 func _on_despawn_timer_timeout():
 	self.queue_free()
 
-
 # Para as balas ricocheteadas não acertarem os mobs
 func _on_change_layer_timer_timeout():
 	self.set_collision_layer_value(3, false)

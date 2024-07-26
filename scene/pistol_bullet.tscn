@@ -8,8 +8,8 @@ radius = 24.0
 height = 148.0
 
 [node name="pistol_bullet" type="RigidBody2D" groups=["bullets"]]
-collision_layer = 524
-collision_mask = 524
+collision_layer = 516
+collision_mask = 516
 mass = 0.01
 gravity_scale = 0.0
 script = ExtResource("1_43hcf")
