@@ -9,7 +9,7 @@ height = 148.0
 
 [node name="pistol_bullet" type="RigidBody2D" groups=["bullets"]]
 collision_layer = 516
-collision_mask = 516
+collision_mask = 518
 mass = 0.01
 gravity_scale = 0.0
 script = ExtResource("1_43hcf")
@@ -19,7 +19,6 @@ scale = Vector2(0.015, 0.015)
 texture = ExtResource("1_oc18s")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1, 0)
 rotation = 1.5708
 scale = Vector2(0.075, 0.075)
 shape = SubResource("CapsuleShape2D_nbdah")
@@ -28,7 +27,7 @@ shape = SubResource("CapsuleShape2D_nbdah")
 one_shot = true
 
 [node name="Change_layer_timer" type="Timer" parent="."]
-wait_time = 0.1
+wait_time = 0.4
 one_shot = true
 
 [connection signal="timeout" from="Despawn_timer" to="." method="_on_despawn_timer_timeout"]

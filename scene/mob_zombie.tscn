@@ -479,10 +479,6 @@ _data = {
 "walk": SubResource("Animation_brtw4")
 }
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vn4cv"]
-radius = 180.0
-height = 533.333
-
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_mn5tj"]
 polygon = PackedVector2Array(-25, -228.9, -25, -227.6, -69, -217.6, -69, -216.4, -90, -208.4, -90, -207.1, -107, -197.1, -107, -195.9, -135, -170.9, -135, -168.7, -148, -151.7, -148, -149.6, -165, -118.5, -165, -112, -167, -28, -166, -28, -166, 15, -164.1, 15, -161.1, 20, -158.2, 20, -158, 42, -159, 72, -157.2, 72, -155.2, 76, -150.2, 76, -150, 103, -147.5, 103, -142, 106.3, -140, 105.2, -140, 103.7, -138.7, 102.1, -117.9, 124, -115.7, 124, -103.7, 133, -101.4, 133, -88.5, 139, -96, 150.4, -96, 153.7, -113, 192.6, -113, 213, -112, 213, -112, 228, -110.4, 228, -108.4, 234, -106.9, 234, -95.9, 247, -93.3, 247, -88, 249.3, -88, 256.4, -84.4, 266, -82.8, 266, -79, 269.8, -79, 274.2, -82, 277.2, -82, 281.6, -84.4, 295, -82.1, 295, -80.1, 298, -76.1, 298, -58.3, 303, -20.9, 303, -8, 301.8, -8, 300.5, -1, 298.5, -1, 289, -0.200012, 283, 0, 301, 6.89999, 301, 17.7, 304, 63, 304, 63, 302.6, 86, 297.6, 86, 283.9, 85.1, 270, 85.7, 270, 100, 274.8, 100, 272.2, 110, 267.2, 110, 264.3, 114.5, 250, 128, 236.8, 128, 234.5, 134, 222.5, 134, 211.7, 130.5, 200.4, 135, 197, 135, 194.7, 133.4, 190, 132.3, 190, 110.3, 138, 108.9, 138, 101, 129.3, 101, 124.7, 100.6, 123.4, 106, 120.4, 106, 129.5, 110.8, 138, 118, 138, 118, 135.7, 122, 130.7, 122, 118.9, 121.2, 111.6, 126, 108, 126, 120.1, 127.2, 131, 129.3, 131, 133.8, 134.3, 136, 133.2, 136, 132.1, 139, 130.1, 139, 120, 140, 120, 140, 99.7, 147.8, 105.3, 150, 104.2, 150, 103.1, 153, 101.1, 153, 96.8, 152.4, 93.6, 157.1, 91.2, 158.1, 111, 159.9, 111, 161.9, 114, 167.8, 114, 171, 110.8, 171, 108.4, 173.4, 96, 171.8, 96, 170.2, 82.6, 179.9, 72, 182.5, 72, 190, 68.2, 190, 64.4, 191.7, 56, 192.3, 56, 207, 24.4, 207, 20, 209.1, -11, 207.7, -11, 205.7, -23, 204, -23, 196.3, -34.1, 199, -35.9, 199, -60.8, 197, -62.8, 200.4, -81, 198.8, -81, 195.8, -108, 194.4, -108, 179.4, -152, 177.7, -152, 157, -168.9, 157, -170.8, 128.9, -201, 126.3, -201, 74.4, -223, 70.1, -223, 45.2, -229, 37.2, -229, 27, -229.8, 27, -231.1)
 
@@ -664,12 +660,16 @@ _data = {
 "lay_down": ExtResource("74_j1n56")
 }
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vn4cv"]
+radius = 180.0
+height = 533.333
+
 [node name="mob_zombie" type="CharacterBody2D"]
 modulate = Color(0.384314, 0, 0, 1)
 light_mask = 513
 scale = Vector2(0.3, 0.3)
-collision_layer = 2
-collision_mask = 2
+collision_layer = 138
+collision_mask = 138
 script = ExtResource("1_nkb4c")
 
 [node name="Shadow_baked" type="PointLight2D" parent="."]
@@ -707,15 +707,6 @@ one_shot = true
 [node name="Reenable_world_hitbox_timer" type="Timer" parent="."]
 wait_time = 3.0
 
-[node name="Area2D" type="Area2D" parent="."]
-collision_layer = 4
-collision_mask = 4
-
-[node name="Shot_hitbox" type="CollisionShape2D" parent="Area2D"]
-visible = false
-position = Vector2(13.3333, 40)
-shape = SubResource("CapsuleShape2D_vn4cv")
-
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
 visible = false
 scale = Vector2(0.85, 0.85)
@@ -738,10 +729,13 @@ one_shot = true
 [node name="Hit_highlight_timer" type="Timer" parent="."]
 wait_time = 0.3
 
+[node name="Shot_hitbox" type="CollisionShape2D" parent="."]
+position = Vector2(13.3333, 40)
+shape = SubResource("CapsuleShape2D_vn4cv")
+
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_dying_animation_finish"]
 [connection signal="timeout" from="Stun_timer" to="." method="_on_stun_timer_timeout"]
 [connection signal="timeout" from="Reenable_world_hitbox_timer" to="." method="_on_reenable_world_hitbox_timer_timeout"]
-[connection signal="body_entered" from="Area2D" to="." method="_on_body_entered"]
 [connection signal="animation_finished" from="zombie_skeleton/AnimationPlayer2" to="." method="_on_animation_player_2_animation_finished"]
 [connection signal="timeout" from="zombie_skeleton/Crawl_timer" to="." method="_on_crawl_timer_timeout"]
 [connection signal="timeout" from="Hit_highlight_timer" to="." method="_on_hit_highlight_timer_timeout"]

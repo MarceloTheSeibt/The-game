@@ -1,7 +1,9 @@
 extends CharacterBody2D
 signal mob_death
+signal mob_hit
 
 var health
+var prev_health  # Vida no frame anterior
 var speed
 var trying_to_get_in = true
 # Início das variáveis de controle do engatinhar do zombie:
@@ -17,6 +19,7 @@ var deltaN
 
 func _ready():
 	health = 100
+	prev_health = health
 	speed = 100
 	$AnimatedSprite2D.play("walk")
 	# Este signal faz o player avisar a sua posição para o mob a cada frame
@@ -36,6 +39,31 @@ func _physics_process(delta):
 		$AnimatedSprite2D.flip_h = false
 		
 	var collision_info = move_and_collide(velocity * delta)
+	
+	if health < prev_health:
+		# Efeito "tomou um hit"
+		self.set_modulate(Color("#620000"))
+		$Hit_highlight_timer.start()
+		if health <= 50 and health > 0:
+			$AnimatedSprite2D.stop()
+			$AnimatedSprite2D.play("hurt")
+			stunned = true
+			$Stun_timer.start()
+
+
+		# Se morrer:
+		if health <= 0:
+			$zombie_skeleton.visible = false
+			$AnimatedSprite2D.visible = true
+			$zombie_skeleton/AnimationPlayer2.stop()
+			$AnimatedSprite2D.stop()
+			$LightOccluder2D.visible = false
+			$AnimationPlayer.play("dying")
+			$Shot_hitbox.set_deferred("disabled", true)
+			$World_hitbox.set_deferred("disabled", true)
+		prev_health = health
+
+
 	if collision_info:
 		# Se o zombie colidir com a hitbox da janela:
 		if collision_info.get_collider().get_name() == "Hitbox_mob_in":
@@ -44,39 +72,10 @@ func _physics_process(delta):
 			if trying_to_get_in:
 				$zombie_skeleton.visible = true
 				$AnimatedSprite2D.visible = false
-				$World_hitbox.set_deferred("disabled", true)
+				self.set_collision_layer_value(8, false)
+				self.set_collision_mask_value(8, false)
 				$zombie_skeleton/AnimationPlayer2.play("lay_down")
 				trying_to_get_in = false
-
-
-func _on_body_entered(body):
-	# body nesse caso é a bullet, que deixa de existir quando atinge o mob
-	if body is RigidBody2D:
-		# Efeito "tomou um hit"
-		self.set_modulate(Color("#620000"))
-		$Hit_highlight_timer.start()
-		body.queue_free()
-		health -= 25
-
-
-	# A mecânica de stun pode ser melhorada
-	if health <= 50 and health > 0:
-		$AnimatedSprite2D.stop()
-		$AnimatedSprite2D.play("hurt")
-		stunned = true
-		$Stun_timer.start()
-
-
-	# Se morrer:
-	if health <= 0:
-		$zombie_skeleton.visible = false
-		$AnimatedSprite2D.visible = true
-		$zombie_skeleton/AnimationPlayer2.stop()
-		$AnimatedSprite2D.stop()
-		$LightOccluder2D.visible = false
-		$AnimationPlayer.play("dying")
-		$Area2D/Shot_hitbox.set_deferred("disabled", true)
-		$World_hitbox.set_deferred("disabled", true)
 
 
 func _on_dying_animation_finish(anim_name):

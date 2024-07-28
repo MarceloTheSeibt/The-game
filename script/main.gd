@@ -12,6 +12,7 @@ func _process(delta):
 
 
 func _on_zombies_spawn_timer_timeout():
+	#print(get_tree_string())
 	var mob_spawn_location = $MobPath/MobSpawnLocation
 	mob_spawn_location.progress_ratio = randf()
 	var zombie_new = mob_zombie_scene.instantiate()
@@ -25,5 +26,4 @@ func _on_zombies_spawn_timer_timeout():
 	zombie.mob_death.connect(self._on_mob_death)
 
 func _on_mob_death():
-	#$Zombie_spawn_timer.start()
-	pass
+	$Zombie_spawn_timer.start()

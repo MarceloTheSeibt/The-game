@@ -25,6 +25,7 @@ texture = ExtResource("3_ub3s3")
 
 [node name="Zombie_spawn_timer" type="Timer" parent="."]
 wait_time = 2.0
+one_shot = true
 
 [node name="Room" parent="." instance=ExtResource("3_2ohop")]
 
