@@ -1,5 +1,5 @@
 extends CharacterBody2D
-signal mob_death
+signal zombie_death(score: int)
 signal mob_hit
 
 var health
@@ -23,7 +23,7 @@ func _ready():
 	speed = 100
 	$AnimatedSprite2D.play("walk")
 	# Este signal faz o player avisar a sua posição para o mob a cada frame
-	var player = get_node("/root/Main/Player_with_pistol/Player")
+	var player = get_node("/root/Main/Player")
 	player.player_position.connect(self._player_position)
 	# Este é para os mobs saberem a posição da(s) entrada(s)
 	var room = get_node("/root/Main/Room")
@@ -53,6 +53,8 @@ func _physics_process(delta):
 
 		# Se morrer:
 		if health <= 0:
+			# 100 pontos por kill
+			zombie_death.emit(100)
 			$zombie_skeleton.visible = false
 			$AnimatedSprite2D.visible = true
 			$zombie_skeleton/AnimationPlayer2.stop()
@@ -82,7 +84,7 @@ func _on_dying_animation_finish(anim_name):
 	if anim_name == "dying":
 		$AnimationPlayer.stop()
 		self.queue_free()
-		mob_death.emit()
+
 
 
 func _player_position(pos):

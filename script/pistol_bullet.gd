@@ -7,7 +7,6 @@ var collided = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	screen_size = get_viewport_rect().size
-	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -18,7 +17,6 @@ func _physics_process(delta):
 			mob_hit = get_node("/root/Main/" + str(collision_info.get_collider().get_name()))
 			if mob_hit.health > 0:
 				mob_hit.health -= 25
-			print(mob_hit, mob_hit.health)
 			self.queue_free()
 
 

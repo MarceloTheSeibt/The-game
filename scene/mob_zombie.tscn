@@ -664,12 +664,12 @@ _data = {
 radius = 180.0
 height = 533.333
 
-[node name="mob_zombie" type="CharacterBody2D"]
+[node name="mob_zombie" type="CharacterBody2D" groups=["zombies"]]
 modulate = Color(0.384314, 0, 0, 1)
 light_mask = 513
 scale = Vector2(0.3, 0.3)
-collision_layer = 138
-collision_mask = 138
+collision_layer = 2147483786
+collision_mask = 2147483786
 script = ExtResource("1_nkb4c")
 
 [node name="Shadow_baked" type="PointLight2D" parent="."]

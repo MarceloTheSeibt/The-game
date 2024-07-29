@@ -1,11 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://xadsabt7dyq4"]
+[gd_scene load_steps=10 format=3 uid="uid://xadsabt7dyq4"]
 
 [ext_resource type="Script" path="res://script/main.gd" id="1_i7a4b"]
-[ext_resource type="PackedScene" uid="uid://c1tfvp3b4m80s" path="res://scene/player_with_pistol.tscn" id="2_jhe8e"]
 [ext_resource type="PackedScene" uid="uid://bci2jssjnyyhi" path="res://scene/room_test.tscn" id="3_2ohop"]
 [ext_resource type="PackedScene" uid="uid://dnlhvjb4dsbqm" path="res://scene/mob_zombie.tscn" id="3_anpxf"]
+[ext_resource type="PackedScene" uid="uid://c0pac7l2gdh4s" path="res://scene/pistol.tscn" id="3_m8t0f"]
 [ext_resource type="Texture2D" uid="uid://7jw8n3jpeg2g" path="res://asset/e21ccf29fe5611da0f5b7c59a30220c8.jpg" id="3_ub3s3"]
 [ext_resource type="Script" path="res://script/Camera2D.gd" id="5_sj1dq"]
+[ext_resource type="PackedScene" uid="uid://dubaka086frrj" path="res://scene/player.tscn" id="7_brui6"]
+[ext_resource type="PackedScene" uid="uid://jg3eimhmhofg" path="res://scene/hud.tscn" id="8_ct4q1"]
 
 [sub_resource type="Curve2D" id="Curve2D_4ya45"]
 _data = {
@@ -16,6 +18,7 @@ point_count = 4
 [node name="Main" type="Node"]
 script = ExtResource("1_i7a4b")
 mob_zombie_scene = ExtResource("3_anpxf")
+pistol_scene = ExtResource("3_m8t0f")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 visible = false
@@ -25,12 +28,8 @@ texture = ExtResource("3_ub3s3")
 
 [node name="Zombie_spawn_timer" type="Timer" parent="."]
 wait_time = 2.0
-one_shot = true
 
 [node name="Room" parent="." instance=ExtResource("3_2ohop")]
-
-[node name="Player_with_pistol" parent="." instance=ExtResource("2_jhe8e")]
-modulate = Color(0.314316, 0.314316, 0.314316, 1)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(960, 540)
@@ -42,5 +41,10 @@ curve = SubResource("Curve2D_4ya45")
 
 [node name="MobSpawnLocation" type="PathFollow2D" parent="MobPath"]
 position = Vector2(1832, -152)
+
+[node name="Player" parent="." instance=ExtResource("7_brui6")]
+modulate = Color(0.314316, 0.314316, 0.314316, 1)
+
+[node name="HUD" parent="." instance=ExtResource("8_ct4q1")]
 
 [connection signal="timeout" from="Zombie_spawn_timer" to="." method="_on_zombies_spawn_timer_timeout"]

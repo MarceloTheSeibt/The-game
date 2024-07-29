@@ -1,11 +1,14 @@
 extends Area2D
+@export var pistol_scene: PackedScene
+
 # Para que a arma que está segurando saiba a posição do player
 signal arm_left_position
 signal player_position
 
 var speed = 275
 var screen_size
-
+var weapon_equipped
+var weapon_new
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -25,6 +28,21 @@ func _process(delta):
 	$arm_left.set_global_position($player_skeleton/Skeleton2D/hip/body/arm_left.get_global_position())
 	$arm_right.set_global_position($player_skeleton/Skeleton2D/hip/body/arm_right.get_global_position())
 	
+	# Snapped serve para arredondar float
+	var arm_left_to_mouse = snapped($arm_left.get_angle_to(get_global_mouse_position()), 0.01)
+
+	
+	
+	# Rotaciona os braços, seguindo o mouse
+	if arm_left_to_mouse != 0.00:
+		if weapon_equipped == "pistol":
+			$arm_left.rotate(arm_left_to_mouse)
+			$arm_right.hide()
+		else:
+			$arm_left.rotate(arm_left_to_mouse)
+			$arm_right.show()
+			$arm_right.set_global_rotation($arm_left.get_global_rotation())
+	
 	
 	if Input.is_action_pressed("move_right"):
 		velocity.x += 1
@@ -34,6 +52,7 @@ func _process(delta):
 		velocity.y += 1
 	if Input.is_action_pressed("move_up"):
 		velocity.y -= 1
+
 	
 	if velocity.length() > 0:  # Animação "walk"
 		velocity = velocity.normalized() * speed
@@ -59,5 +78,16 @@ func _process(delta):
 	player_position.emit($player_skeleton.get_global_position())
 
 
-func _on_body_entered(body):
-	pass
+func add_pistol():
+	# Se não tiver nenhuma arma: adiciona a escolhida
+	# Se já tiver uma: deleta ela apenas
+	# *Sujeito a alterações futuras*
+	if weapon_equipped == "pistol":
+		if weapon_new != null:
+			weapon_new.queue_free()
+			weapon_equipped = "none"
+	else:
+		weapon_new = pistol_scene.instantiate()
+		add_child(weapon_new)
+		weapon_equipped = "pistol"
+
