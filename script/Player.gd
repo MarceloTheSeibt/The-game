@@ -1,5 +1,6 @@
 extends Area2D
 @export var pistol_scene: PackedScene
+@export var smg_scene: PackedScene
 
 # Para que a arma que está segurando saiba a posição do player
 signal arm_left_position
@@ -10,7 +11,7 @@ var health = 100
 var on_death = true  # Controle da função de morte
 var speed = 275
 var screen_size
-var weapon_equipped
+var weapon_equipped = "none"
 var weapon_new
 
 # Called when the node enters the scene tree for the first time.
@@ -99,16 +100,32 @@ func _process(delta):
 
 func add_pistol():
 	# Se não tiver nenhuma arma: adiciona a escolhida
-	# Se já tiver uma: deleta ela apenas
+	# Se já tiver uma: deleta a atual e adiciona a nova
 	# *Sujeito a alterações futuras*
-	if weapon_equipped == "pistol":
+	if weapon_equipped != "none":
 		if weapon_new != null:
 			weapon_new.queue_free()
-			weapon_equipped = "none"
+			weapon_new = pistol_scene.instantiate()
+			add_child(weapon_new)
 	else:
 		weapon_new = pistol_scene.instantiate()
 		add_child(weapon_new)
 		weapon_equipped = "pistol"
+
+
+func add_smg():
+	# Se não tiver nenhuma arma: adiciona a escolhida
+	# Se já tiver uma: deleta a atual e adiciona a nova
+	# *Sujeito a alterações futuras*
+	if weapon_equipped != "none":
+		if weapon_new != null:
+			weapon_new.queue_free()
+			weapon_new = smg_scene.instantiate()
+			add_child(weapon_new)
+	else:
+		weapon_new = smg_scene.instantiate()
+		add_child(weapon_new)
+		weapon_equipped = "smg"
 
 
 

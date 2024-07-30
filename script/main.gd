@@ -13,6 +13,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	
 	$HUD/Player_health.text = str($Player.health)
 	if $Player.health <= 0:
 		$HUD/Player_health.hide()
@@ -22,8 +23,17 @@ func _process(delta):
 		$HUD/Buy_pistol.show()
 		if Input.is_action_just_pressed("interact"):
 			$Player.add_pistol()
+
 	else:
 		$HUD/Buy_pistol.hide()
+		
+	if $Room/Buy_smg.overlaps_body($Player/player_skeleton):
+		$HUD/Buy_smg.show()
+		if Input.is_action_just_pressed("interact"):
+			$Player.add_smg()
+	else:
+		$HUD/Buy_smg.hide()
+		
 	$HUD/Score.text = str(score)
 
 
@@ -56,4 +66,3 @@ func _on_player_hit_by_zombie(damage):
 	$Player.health -= damage
 	$Player.set_modulate(Color("#620000"))
 	$Player/Hit_highlight_timer.start()
-	print($Player.health)

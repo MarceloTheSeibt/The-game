@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://bpro6sg0ergjc"]
+
+[ext_resource type="Script" path="res://scene/smg.gd" id="1_8owon"]
+[ext_resource type="PackedScene" uid="uid://lk6slue7hdrk" path="res://scene/smg_skeleton.tscn" id="1_50txm"]
+[ext_resource type="PackedScene" uid="uid://bmmsch1uekekh" path="res://scene/smg_bullet.tscn" id="2_b7f82"]
+
+[node name="Smg" type="Node2D"]
+scale = Vector2(0.5, 0.5)
+script = ExtResource("1_8owon")
+bullet_scene = ExtResource("2_b7f82")
+metadata/_edit_group_ = true
+
+[node name="smg_skeleton" parent="." instance=ExtResource("1_50txm")]
+
+[node name="bullet_point" type="Sprite2D" parent="."]
+position = Vector2(283.69, -34.685)
+
+[node name="Fire_delay" type="Timer" parent="."]
+wait_time = 0.2
+
+[connection signal="shot" from="." to="." method="_on_smg_shot"]
+[connection signal="timeout" from="Fire_delay" to="." method="_on_fire_delay_timeout"]

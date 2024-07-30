@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://bci2jssjnyyhi"]
+[gd_scene load_steps=7 format=3 uid="uid://bci2jssjnyyhi"]
 
-[ext_resource type="Script" path="res://scene/room_test.gd" id="1_ky845"]
+[ext_resource type="Script" path="res://script/room_test.gd" id="1_ky845"]
 [ext_resource type="Texture2D" uid="uid://b7btu6fcq4d4x" path="res://asset/floor_test.png" id="1_wmk63"]
 [ext_resource type="Texture2D" uid="uid://ibcwso2urlvj" path="res://asset/wall_test.png" id="2_h7twx"]
 [ext_resource type="Texture2D" uid="uid://ckfsujeysq37d" path="res://asset/lighting/spot.png" id="3_u15at"]
 [ext_resource type="PackedScene" uid="uid://chfmmr100ss3o" path="res://scene/prop_pistol.tscn" id="5_glwrp"]
+[ext_resource type="PackedScene" uid="uid://pr6oqtac5prh" path="res://scene/prop_smg.tscn" id="6_ekpjy"]
 
 [node name="StaticBody2D" type="StaticBody2D"]
 collision_layer = 553
@@ -13,14 +14,14 @@ script = ExtResource("1_ky845")
 
 [node name="Floor" type="Sprite2D" parent="."]
 self_modulate = Color(0.194349, 0.194349, 0.194349, 1)
-position = Vector2(921, 505)
-scale = Vector2(0.4, 0.4)
+position = Vector2(924.92, 505)
+scale = Vector2(0.5, 0.4)
 texture = ExtResource("1_wmk63")
 
 [node name="Wall" type="Sprite2D" parent="."]
 self_modulate = Color(0.194349, 0.194349, 0.194349, 1)
 position = Vector2(906, 535)
-scale = Vector2(0.4, 0.4)
+scale = Vector2(0.5, 0.4)
 texture = ExtResource("2_h7twx")
 
 [node name="Mob_in" type="Node2D" parent="Wall"]
@@ -59,65 +60,65 @@ texture = ExtResource("3_u15at")
 texture_scale = 13.93
 
 [node name="Walls" type="StaticBody2D" parent="."]
-visible = false
 collision_layer = 644
 collision_mask = 644
 
 [node name="Wall_1" type="CollisionPolygon2D" parent="Walls"]
+position = Vector2(109, 15)
 polygon = PackedVector2Array(1466, -31, 1477, 185, 1461, 244, 1400, 331, 1377, 185)
 
-[node name="Wall_2" type="CollisionPolygon2D" parent="Walls"]
-position = Vector2(-540, -62)
-polygon = PackedVector2Array(930, 6, 1019, 72, 1091, 152, 1116, 279, 1017, 266)
-
 [node name="Wall_3" type="CollisionPolygon2D" parent="Walls"]
-position = Vector2(-807, 483)
-polygon = PackedVector2Array(1197, -545, 1286, -290, 1156, 453, 949, 532)
+position = Vector2(-937, 489)
+polygon = PackedVector2Array(1146, -596, 1301, -274, 1123, 469, 852, 539)
 
 [node name="Wall_4" type="CollisionPolygon2D" parent="Walls"]
 position = Vector2(-490, 567)
-polygon = PackedVector2Array(2149, 376, 2141, 461, 773, 556, 650, 391)
+polygon = PackedVector2Array(2149, 376, 2179, 625, 718, 675, 650, 391)
 
 [node name="Wall_5" type="CollisionPolygon2D" parent="Walls"]
+position = Vector2(155, 26)
 polygon = PackedVector2Array(1331, -121, 1254, -423, 1876, -251, 1477, 196, 1139, 131)
 
 [node name="Wall_6" type="CollisionPolygon2D" parent="Walls"]
-position = Vector2(-1194, 1010)
+position = Vector2(-1346, 994)
 polygon = PackedVector2Array(1465, -144, 1618, 28, 1629, 196, 1215, -33)
 
 [node name="Wall_7" type="CollisionPolygon2D" parent="Walls"]
 position = Vector2(-1175, -20)
-polygon = PackedVector2Array(1715, -114, 1735, 175, 1559, 272, 1338, -63)
+polygon = PackedVector2Array(1575, -94, 1664, 213, 1493, 271, 1238, -38)
 
 [node name="Wall_8" type="CollisionPolygon2D" parent="Walls"]
-position = Vector2(-59, 1037)
+position = Vector2(116, 1001)
 polygon = PackedVector2Array(1645, -216, 1739, -34, 1259, 266, 1511, -37)
 
 [node name="Wall_9" type="CollisionPolygon2D" parent="Walls"]
 position = Vector2(-301, -50)
-polygon = PackedVector2Array(987, -13, 1767, -18, 1669, 253, 1017, 266)
+polygon = PackedVector2Array(975, -15, 1965, 1, 1938, 265, 968, 278)
 
 [node name="Wall_10" type="CollisionPolygon2D" parent="Walls"]
-position = Vector2(44, 433)
-polygon = PackedVector2Array(1487, 97, 1913, 901, 1425, 703, 1389, 132)
+position = Vector2(207, 353)
+polygon = PackedVector2Array(1478, 100, 1913, 901, 1425, 703, 1350, 175)
 
 [node name="Hitbox_mob_in" type="StaticBody2D" parent="."]
-visible = false
 collision_layer = 128
 collision_mask = 128
 
 [node name="Hitbox_mob_in" type="CollisionPolygon2D" parent="Hitbox_mob_in"]
-position = Vector2(431, 448)
+position = Vector2(548, 475)
 polygon = PackedVector2Array(997, -100, 1045, -110, 1058, -9, 1016, 5)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
-visible = false
 
 [node name="Walk_boundaries" type="CollisionPolygon2D" parent="StaticBody2D"]
+visible = false
 position = Vector2(400, 468)
 build_mode = 1
-polygon = PackedVector2Array(85, -242, 971, -251, 1025.22, 102.482, 1079, 464, -37, 474)
+polygon = PackedVector2Array(-23, -243, 1084, -251, 1222, 471, -180, 474)
 
 [node name="Buy_pistol" parent="." instance=ExtResource("5_glwrp")]
 position = Vector2(888, 127)
+scale = Vector2(0.2, 0.2)
+
+[node name="Buy_smg" parent="." instance=ExtResource("6_ekpjy")]
+position = Vector2(1229, 127)
 scale = Vector2(0.2, 0.2)

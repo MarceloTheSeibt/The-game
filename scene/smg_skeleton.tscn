@@ -1,0 +1,374 @@
+[gd_scene load_steps=29 format=3 uid="uid://lk6slue7hdrk"]
+
+[ext_resource type="Texture2D" uid="uid://djh12j12nqlnq" path="res://asset/guns_1/pistol_shell.png" id="1_dkxh5"]
+[ext_resource type="Texture2D" uid="uid://vyph28xgfu0h" path="res://asset/explosion_effects/1/frames/1_1.png" id="2_n71s0"]
+[ext_resource type="Texture2D" uid="uid://b8pvipo3rq07w" path="res://asset/explosion_effects/1/frames/1_2.png" id="3_yfl2r"]
+[ext_resource type="Texture2D" uid="uid://drkayvt3cmpf2" path="res://asset/explosion_effects/1/frames/1_3.png" id="4_ggr1s"]
+[ext_resource type="Texture2D" uid="uid://bfhiuedgh7vh8" path="res://asset/explosion_effects/1/frames/1_4.png" id="5_dq5to"]
+[ext_resource type="Texture2D" uid="uid://d2u22obnbd6e5" path="res://asset/explosion_effects/1/frames/1_5.png" id="6_ebs5s"]
+[ext_resource type="Texture2D" uid="uid://d0m687fguptid" path="res://asset/explosion_effects/1/frames/1_6.png" id="7_y3jjk"]
+[ext_resource type="Texture2D" uid="uid://cunov8ejt613e" path="res://asset/explosion_effects/1/frames/1_7.png" id="8_ea36w"]
+[ext_resource type="Texture2D" uid="uid://rmv1hpwtae5o" path="res://asset/explosion_effects/1/frames/1_8.png" id="9_htaet"]
+[ext_resource type="Texture2D" uid="uid://os5hnvgdr65n" path="res://asset/explosion_effects/1/frames/1_9.png" id="10_qarem"]
+[ext_resource type="Texture2D" uid="uid://clpj5iow7bsw3" path="res://asset/explosion_effects/1/frames/1_10.png" id="11_cjx4a"]
+[ext_resource type="Texture2D" uid="uid://dhuxmdq83p1xe" path="res://asset/explosion_effects/1/frames/1_11.png" id="12_esbir"]
+[ext_resource type="Texture2D" uid="uid://h82agygdywg8" path="res://asset/explosion_effects/1/frames/1_12.png" id="13_rkier"]
+[ext_resource type="Texture2D" uid="uid://bkrfwbgmovibf" path="res://asset/explosion_effects/1/frames/1_13.png" id="14_fiu7t"]
+[ext_resource type="Texture2D" uid="uid://ccct1vhf7duec" path="res://asset/explosion_effects/1/frames/1_14.png" id="15_q26gw"]
+[ext_resource type="Texture2D" uid="uid://caylmuin1mm4e" path="res://asset/explosion_effects/1/frames/1_15.png" id="16_08wby"]
+[ext_resource type="Texture2D" uid="uid://dowfu7qpoko8x" path="res://asset/explosion_effects/1/frames/1_16.png" id="17_qc0fq"]
+[ext_resource type="Texture2D" uid="uid://lqgvmmy7dm0" path="res://asset/explosion_effects/1/frames/1_17.png" id="18_lxj36"]
+[ext_resource type="Texture2D" uid="uid://diugdyqkwp810" path="res://asset/explosion_effects/1/frames/1_18.png" id="19_ocos1"]
+[ext_resource type="Texture2D" uid="uid://d35x7of360oaj" path="res://asset/explosion_effects/1/frames/1_19.png" id="20_nakmw"]
+[ext_resource type="Texture2D" uid="uid://dcx6g8d05kr4g" path="res://asset/explosion_effects/1/frames/1_20.png" id="21_avhcd"]
+[ext_resource type="Texture2D" uid="uid://cod8rmobmtxtv" path="res://asset/guns_1/smg_exploded.png" id="22_iv83i"]
+[ext_resource type="Texture2D" uid="uid://cjxnywtibqamf" path="res://asset/muzzle_flash/m_10.png" id="23_2ray2"]
+[ext_resource type="Texture2D" uid="uid://ckfsujeysq37d" path="res://asset/lighting/spot.png" id="24_he75l"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qcfsv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_n71s0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_yfl2r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ggr1s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_dq5to")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_ebs5s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_y3jjk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_ea36w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_htaet")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_qarem")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_cjx4a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_esbir")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_rkier")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_fiu7t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_q26gw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_08wby")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_qc0fq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_lxj36")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_ocos1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_nakmw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_avhcd")
+}],
+"loop": true,
+"name": &"shoot",
+"speed": 60.0
+}]
+
+[sub_resource type="Animation" id="Animation_oxlxi"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Skeleton2D/hip/bolt:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-100, -107)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Skeleton2D/hip/bolt:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("shell:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-16, -75)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("shell:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("muzzle_flash:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("PointLight2D:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("PointLight2D:texture_scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.01]
+}
+
+[sub_resource type="Animation" id="Animation_o04yx"]
+resource_name = "shoot"
+length = 0.35
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("muzzle_smoke:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0166667, 0.0333333, 0.05, 0.0666667, 0.0833333, 0.1, 0.116667, 0.133333, 0.15, 0.166667, 0.183333, 0.2, 0.216667, 0.233333, 0.25, 0.266667, 0.283333, 0.3, 0.316667, 0.333333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("muzzle_smoke:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["shoot"]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Skeleton2D/hip/bolt:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.15),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-100, -107), Vector2(0, -107), Vector2(-100, -107)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Skeleton2D/hip/bolt:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("shell:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.35),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-16, -75), Vector2(15, -125), Vector2(30, -50)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("shell:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.35),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.785398, 1.13446]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("muzzle_flash:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.35),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("PointLight2D:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.05),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("PointLight2D:texture_scale")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.01, 8.0, 0.01]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lmpx6"]
+_data = {
+"RESET": SubResource("Animation_oxlxi"),
+"shoot": SubResource("Animation_o04yx")
+}
+
+[node name="smg_skeleton" type="Sprite2D"]
+light_mask = 2
+scale = Vector2(-1, 1)
+
+[node name="shell" type="Sprite2D" parent="."]
+position = Vector2(-16, -75)
+scale = Vector2(0.59, 0.529)
+texture = ExtResource("1_dkxh5")
+
+[node name="muzzle_smoke" type="AnimatedSprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.627451)
+light_mask = 0
+position = Vector2(-352.26, -26)
+rotation = -1.5708
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_qcfsv")
+animation = &"shoot"
+frame = 6
+
+[node name="polygons" type="Node2D" parent="."]
+
+[node name="body" type="Polygon2D" parent="polygons"]
+offset = Vector2(-355, -184)
+texture = ExtResource("22_iv83i")
+skeleton = NodePath("../../Skeleton2D")
+polygon = PackedVector2Array(53, 126, 55, 170, 131, 203, 280, 211, 301, 245, 340, 249, 341, 408, 459, 408, 452, 292, 474, 239, 506, 275, 543, 306, 591, 280, 590, 162, 544, 76, 515, 53, 414, 69, 222, 72, 171, 50, 131, 79)
+uv = PackedVector2Array(53, 126, 55, 170, 131, 203, 280, 211, 301, 245, 340, 249, 341, 408, 459, 408, 452, 292, 474, 239, 506, 275, 543, 306, 591, 280, 590, 162, 544, 76, 515, 53, 414, 69, 222, 72, 171, 50, 131, 79)
+bones = ["hip", PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1), "hip/bolt", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)]
+
+[node name="bolt" type="Polygon2D" parent="polygons"]
+position = Vector2(-94, -105)
+offset = Vector2(-360, -45)
+texture = ExtResource("22_iv83i")
+skeleton = NodePath("../../Skeleton2D")
+polygon = PackedVector2Array(313, 23, 312, 65, 399, 71, 406, 29)
+uv = PackedVector2Array(313, 23, 312, 65, 399, 71, 406, 29)
+bones = ["hip", PackedFloat32Array(0, 0, 0, 0), "hip/bolt", PackedFloat32Array(1, 1, 1, 1)]
+
+[node name="Skeleton2D" type="Skeleton2D" parent="."]
+
+[node name="hip" type="Bone2D" parent="Skeleton2D"]
+rest = Transform2D(1, 0, 0, 1, 0, 0)
+
+[node name="bolt" type="Bone2D" parent="Skeleton2D/hip"]
+position = Vector2(-100, -107)
+rest = Transform2D(1, 0, 0, 1, -100, -107)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_lmpx6")
+}
+
+[node name="muzzle_flash" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(0.925338, 0.925338, 3.08037e-06, 0.545098)
+light_mask = 0
+position = Vector2(-349, -26)
+texture = ExtResource("23_2ray2")
+flip_h = true
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+visible = false
+light_mask = 2
+visibility_layer = 2
+position = Vector2(-285.46, -31.17)
+color = Color(0.999985, 0.324839, 0.0470865, 1)
+energy = 3.5
+shadow_enabled = true
+texture = ExtResource("24_he75l")
+texture_scale = 0.01

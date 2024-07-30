@@ -324,6 +324,7 @@ rotation = -1.5708
 scale = Vector2(6.135, 6.135)
 sprite_frames = SubResource("SpriteFrames_la0ci")
 animation = &"shoot"
+frame = 5
 
 [node name="shell" type="Sprite2D" parent="."]
 position = Vector2(0, -10)
@@ -410,5 +411,6 @@ speed_scale = 1.5
 position = Vector2(-292, -54)
 color = Color(1, 0.313726, 0, 1)
 energy = 0.0
+shadow_enabled = true
 texture = ExtResource("25_la106")
 texture_scale = 3.69
