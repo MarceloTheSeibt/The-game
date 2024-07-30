@@ -48,3 +48,4 @@ modulate = Color(0.314316, 0.314316, 0.314316, 1)
 [node name="HUD" parent="." instance=ExtResource("8_ct4q1")]
 
 [connection signal="timeout" from="Zombie_spawn_timer" to="." method="_on_zombies_spawn_timer_timeout"]
+[connection signal="player_death" from="Player" to="Camera2D" method="_on_player_player_death"]

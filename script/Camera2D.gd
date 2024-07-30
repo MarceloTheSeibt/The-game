@@ -15,3 +15,8 @@ func _process(delta):
 func _player_position(pos):
 	#self.set_global_position(pos)
 	pass
+
+
+func _on_player_player_death(pos):
+	self.set_global_position(pos)
+	self.set_zoom(Vector2(1.5, 1.5))

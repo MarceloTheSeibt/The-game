@@ -1,11 +1,15 @@
 extends CharacterBody2D
 signal zombie_death(score: int)
 signal mob_hit
+signal zombie_hits_player(damage: float)
 
 var health
 var prev_health  # Vida no frame anterior
 var speed
 var trying_to_get_in = true
+var score_to_player = 100
+var damage_to_player = 20
+var hit_on_cooldown = false
 # Início das variáveis de controle do engatinhar do zombie:
 # As hitboxes se movem junto das animações.
 var crawl_speed = null
@@ -54,7 +58,7 @@ func _physics_process(delta):
 		# Se morrer:
 		if health <= 0:
 			# 100 pontos por kill
-			zombie_death.emit(100)
+			zombie_death.emit(score_to_player)
 			$zombie_skeleton.visible = false
 			$AnimatedSprite2D.visible = true
 			$zombie_skeleton/AnimationPlayer2.stop()
@@ -67,6 +71,7 @@ func _physics_process(delta):
 
 
 	if collision_info:
+		#print(collision_info.get_collider().get_name())
 		# Se o zombie colidir com a hitbox da janela:
 		if collision_info.get_collider().get_name() == "Hitbox_mob_in":
 		# Gambiarra alert: quando o zombie deita para engatinhar, na verdade é outro corpo,
@@ -78,7 +83,13 @@ func _physics_process(delta):
 				self.set_collision_mask_value(8, false)
 				$zombie_skeleton/AnimationPlayer2.play("lay_down")
 				trying_to_get_in = false
-
+		# Se colidir com o player: causa o dano especificado e entra em cooldown
+		if !hit_on_cooldown:
+			if collision_info.get_collider().get_name() == "player_skeleton":
+				$Hit_cooldown.start()
+				zombie_hits_player.emit(damage_to_player)
+				hit_on_cooldown = true
+			
 
 func _on_dying_animation_finish(anim_name):
 	if anim_name == "dying":
@@ -158,3 +169,8 @@ func _window_position(win_pos):
 func _on_hit_highlight_timer_timeout():
 	# Cor padrão para o level teste
 	self.set_modulate(Color("#505050"))
+
+# Cooldown para cada hit do zombie
+func _on_hit_cooldown_timeout():
+	hit_on_cooldown = false
+

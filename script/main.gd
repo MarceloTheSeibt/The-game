@@ -13,8 +13,12 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	$HUD/Player_health.text = str($Player.health)
+	if $Player.health <= 0:
+		$HUD/Player_health.hide()
+		$HUD/Score.hide()
 	# Se o player estiver na hitbox de compra da pistola:
-	if $Player.overlaps_area($Room/Buy_pistol):
+	if $Room/Buy_pistol.overlaps_body($Player/player_skeleton):
 		$HUD/Buy_pistol.show()
 		if Input.is_action_just_pressed("interact"):
 			$Player.add_pistol()
@@ -37,7 +41,8 @@ func _on_zombies_spawn_timer_timeout():
 	for z in get_tree().get_nodes_in_group("zombies"):
 		zombie = z
 	zombie.zombie_death.connect(self._on_mob_death)
-	print(zombie)
+	zombie.zombie_hits_player.connect(self._on_player_hit_by_zombie)
+
 
 
 
@@ -46,3 +51,9 @@ func _on_mob_death(points):
 	score += points
 	#$Zombie_spawn_timer.start()
 
+
+func _on_player_hit_by_zombie(damage):
+	$Player.health -= damage
+	$Player.set_modulate(Color("#620000"))
+	$Player/Hit_highlight_timer.start()
+	print($Player.health)

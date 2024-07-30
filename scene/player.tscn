@@ -1,17 +1,14 @@
-[gd_scene load_steps=6 format=3 uid="uid://dubaka086frrj"]
+[gd_scene load_steps=5 format=3 uid="uid://dubaka086frrj"]
 
 [ext_resource type="Script" path="res://script/Player.gd" id="1_qm1p0"]
 [ext_resource type="PackedScene" uid="uid://c0pac7l2gdh4s" path="res://scene/pistol.tscn" id="2_1hau8"]
 [ext_resource type="PackedScene" uid="uid://bnlq34geuxnms" path="res://scene/character_body_2d.tscn" id="2_nri55"]
 [ext_resource type="Texture2D" uid="uid://f2stwt72emrs" path="res://asset/player_sprites/Warlord/player_arm.png" id="2_t40xa"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_hqqn5"]
-size = Vector2(405, 288)
-
 [node name="Player" type="Area2D"]
 scale = Vector2(0.3, 0.3)
-collision_layer = 1073741826
-collision_mask = 1073741826
+collision_layer = 2
+collision_mask = 2
 script = ExtResource("1_qm1p0")
 pistol_scene = ExtResource("2_1hau8")
 metadata/_edit_vertical_guides_ = [-86.0]
@@ -36,7 +33,7 @@ offset = Vector2(-60, 42)
 position = Vector2(151, 47)
 offset = Vector2(-60, 42)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 64)
-rotation = -1.5708
-shape = SubResource("RectangleShape2D_hqqn5")
+[node name="Hit_highlight_timer" type="Timer" parent="."]
+wait_time = 0.3
+
+[connection signal="timeout" from="Hit_highlight_timer" to="." method="_on_hit_highlight_timer_timeout"]
