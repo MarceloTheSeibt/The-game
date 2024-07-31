@@ -1,12 +1,12 @@
 [gd_scene load_steps=4 format=3 uid="uid://bpro6sg0ergjc"]
 
-[ext_resource type="Script" path="res://scene/smg.gd" id="1_8owon"]
 [ext_resource type="PackedScene" uid="uid://lk6slue7hdrk" path="res://scene/smg_skeleton.tscn" id="1_50txm"]
+[ext_resource type="Script" path="res://script/smg.gd" id="1_n6u0x"]
 [ext_resource type="PackedScene" uid="uid://bmmsch1uekekh" path="res://scene/smg_bullet.tscn" id="2_b7f82"]
 
 [node name="Smg" type="Node2D"]
 scale = Vector2(0.5, 0.5)
-script = ExtResource("1_8owon")
+script = ExtResource("1_n6u0x")
 bullet_scene = ExtResource("2_b7f82")
 metadata/_edit_group_ = true
 

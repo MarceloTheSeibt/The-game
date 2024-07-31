@@ -1,5 +1,5 @@
 extends CharacterBody2D
-signal zombie_death(score: int)
+signal zombie_death(score: int, position: Vector2)
 signal mob_hit
 signal zombie_hits_player(damage: float)
 
@@ -58,7 +58,7 @@ func _physics_process(delta):
 		# Se morrer:
 		if health <= 0:
 			# 100 pontos por kill
-			zombie_death.emit(score_to_player)
+			zombie_death.emit(score_to_player, self.get_global_position())
 			$zombie_skeleton.visible = false
 			$AnimatedSprite2D.visible = true
 			$zombie_skeleton/AnimationPlayer2.stop()

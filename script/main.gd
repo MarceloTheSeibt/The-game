@@ -1,15 +1,18 @@
 extends Node
 @export var mob_zombie_scene: PackedScene
 @export var pistol_scene: PackedScene
+@export var bouncy_bullets_scene: PackedScene
 
 
 var zombie_scene
 var pistol_new
 var score = 0
+var bouncy_bullets_active = false  # Teste, deixar false depois
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$Zombie_spawn_timer.start()
-	
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -56,9 +59,10 @@ func _on_zombies_spawn_timer_timeout():
 
 
 
-func _on_mob_death(points):
+func _on_mob_death(points, zombie_pos):
 	# A quantidade de pontos que cada mob dá está no script dele
 	score += points
+	drop_powerup(zombie_pos)
 	#$Zombie_spawn_timer.start()
 
 
@@ -66,3 +70,17 @@ func _on_player_hit_by_zombie(damage):
 	$Player.health -= damage
 	$Player.set_modulate(Color("#620000"))
 	$Player/Hit_highlight_timer.start()
+	
+	
+func drop_powerup(pos):
+	var chance = randi_range(1, 10)
+	if chance >= 3:
+		var pow_bouncy = bouncy_bullets_scene.instantiate()
+		pow_bouncy.set_global_position(pos)
+		add_child(pow_bouncy)
+		pow_bouncy.picked_up.connect(self._on_power_up_picked_up)
+
+
+func _on_power_up_picked_up(power_up_name):
+	if power_up_name == "bouncy_bullets":
+		bouncy_bullets_active = true

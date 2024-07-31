@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://lk6slue7hdrk"]
+[gd_scene load_steps=27 format=3 uid="uid://lk6slue7hdrk"]
 
 [ext_resource type="Texture2D" uid="uid://djh12j12nqlnq" path="res://asset/guns_1/pistol_shell.png" id="1_dkxh5"]
 [ext_resource type="Texture2D" uid="uid://vyph28xgfu0h" path="res://asset/explosion_effects/1/frames/1_1.png" id="2_n71s0"]
@@ -19,8 +19,6 @@
 [ext_resource type="Texture2D" uid="uid://dowfu7qpoko8x" path="res://asset/explosion_effects/1/frames/1_16.png" id="17_qc0fq"]
 [ext_resource type="Texture2D" uid="uid://lqgvmmy7dm0" path="res://asset/explosion_effects/1/frames/1_17.png" id="18_lxj36"]
 [ext_resource type="Texture2D" uid="uid://diugdyqkwp810" path="res://asset/explosion_effects/1/frames/1_18.png" id="19_ocos1"]
-[ext_resource type="Texture2D" uid="uid://d35x7of360oaj" path="res://asset/explosion_effects/1/frames/1_19.png" id="20_nakmw"]
-[ext_resource type="Texture2D" uid="uid://dcx6g8d05kr4g" path="res://asset/explosion_effects/1/frames/1_20.png" id="21_avhcd"]
 [ext_resource type="Texture2D" uid="uid://cod8rmobmtxtv" path="res://asset/guns_1/smg_exploded.png" id="22_iv83i"]
 [ext_resource type="Texture2D" uid="uid://cjxnywtibqamf" path="res://asset/muzzle_flash/m_10.png" id="23_2ray2"]
 [ext_resource type="Texture2D" uid="uid://ckfsujeysq37d" path="res://asset/lighting/spot.png" id="24_he75l"]
@@ -86,10 +84,7 @@ animations = [{
 "texture": ExtResource("19_ocos1")
 }, {
 "duration": 1.0,
-"texture": ExtResource("20_nakmw")
-}, {
-"duration": 1.0,
-"texture": ExtResource("21_avhcd")
+"texture": null
 }],
 "loop": true,
 "name": &"shoot",
@@ -319,7 +314,7 @@ rotation = -1.5708
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_qcfsv")
 animation = &"shoot"
-frame = 6
+frame = 19
 
 [node name="polygons" type="Node2D" parent="."]
 

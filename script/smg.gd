@@ -18,6 +18,7 @@ func _ready():
 	player_gun_point_1 = get_node("/root/Main/Player/arm_left/gun_point")
 	player_gun_point_2 = get_node("/root/Main/Player/arm_left/gun_point2")
 
+
 func _process(delta):
 	deltaN = delta
 

@@ -324,7 +324,6 @@ rotation = -1.5708
 scale = Vector2(6.135, 6.135)
 sprite_frames = SubResource("SpriteFrames_la0ci")
 animation = &"shoot"
-frame = 5
 
 [node name="shell" type="Sprite2D" parent="."]
 position = Vector2(0, -10)

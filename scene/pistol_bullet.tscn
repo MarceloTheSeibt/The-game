@@ -1,12 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://c4rpku6ibinv0"]
+[gd_scene load_steps=6 format=3 uid="uid://c4rpku6ibinv0"]
 
 [ext_resource type="Script" path="res://script/pistol_bullet.gd" id="1_43hcf"]
 [ext_resource type="Texture2D" uid="uid://jelrtvm2avlv" path="res://asset/guns_1/bullet.png" id="1_oc18s"]
-[ext_resource type="Texture2D" uid="uid://ckfsujeysq37d" path="res://asset/lighting/spot.png" id="2_gefmu"]
+[ext_resource type="PackedScene" uid="uid://cse7xtj30euvg" path="res://scene/trail_bullet.tscn" id="3_km1tb"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nbdah"]
 radius = 24.0
 height = 148.0
+
+[sub_resource type="Curve" id="Curve_hp8bn"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
 
 [node name="pistol_bullet" type="RigidBody2D" groups=["bullets"]]
 modulate = Color(0.314316, 0.314316, 0.314316, 1)
@@ -17,13 +21,6 @@ mass = 0.01
 gravity_scale = 0.0
 script = ExtResource("1_43hcf")
 
-[node name="Tracer" type="Sprite2D" parent="."]
-self_modulate = Color(1, 1, 1, 0.509804)
-position = Vector2(5.18, 0)
-scale = Vector2(0.05, 0.06)
-texture = ExtResource("2_gefmu")
-offset = Vector2(-63.605, 0)
-
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.015, 0.015)
 texture = ExtResource("1_oc18s")
@@ -33,16 +30,12 @@ rotation = 1.5708
 scale = Vector2(0.075, 0.075)
 shape = SubResource("CapsuleShape2D_nbdah")
 
-[node name="Despawn_timer" type="Timer" parent="."]
-one_shot = true
-
-[node name="Change_layer_timer" type="Timer" parent="."]
-wait_time = 0.4
-one_shot = true
-
 [node name="Despawn_no_hit_timer" type="Timer" parent="."]
 wait_time = 3.0
 
-[connection signal="timeout" from="Despawn_timer" to="." method="_on_despawn_timer_timeout"]
-[connection signal="timeout" from="Change_layer_timer" to="." method="_on_change_layer_timer_timeout"]
+[node name="Trail_bullet" parent="." instance=ExtResource("3_km1tb")]
+width = 6.0
+width_curve = SubResource("Curve_hp8bn")
+default_color = Color(1, 1, 1, 0.784314)
+
 [connection signal="timeout" from="Despawn_no_hit_timer" to="." method="_on_despawn_no_hit_timer_timeout"]

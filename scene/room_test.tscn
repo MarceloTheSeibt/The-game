@@ -8,8 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://pr6oqtac5prh" path="res://scene/prop_smg.tscn" id="6_ekpjy"]
 
 [node name="StaticBody2D" type="StaticBody2D"]
-collision_layer = 553
-collision_mask = 553
+collision_layer = 41
+collision_mask = 41
 script = ExtResource("1_ky845")
 
 [node name="Floor" type="Sprite2D" parent="."]
@@ -28,7 +28,7 @@ texture = ExtResource("2_h7twx")
 position = Vector2(1230, -250)
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
-position = Vector2(1494.78, 426)
+position = Vector2(1632.22, 426)
 scale = Vector2(1.51734, 1)
 skew = 1.08036
 color = Color(0.929412, 0.701961, 0.278431, 1)
@@ -53,51 +53,51 @@ texture_scale = 10.9
 [node name="PointLight2D3" type="PointLight2D" parent="."]
 position = Vector2(897, 636)
 rotation = -1.1973
-energy = 3.12
+energy = 2.51
 blend_mode = 2
 shadow_color = Color(0.831373, 0.290196, 0, 0)
 texture = ExtResource("3_u15at")
 texture_scale = 13.93
 
 [node name="Walls" type="StaticBody2D" parent="."]
-collision_layer = 644
-collision_mask = 644
+collision_layer = 4
+collision_mask = 4
 
 [node name="Wall_1" type="CollisionPolygon2D" parent="Walls"]
 position = Vector2(109, 15)
-polygon = PackedVector2Array(1466, -31, 1477, 185, 1461, 244, 1400, 331, 1377, 185)
+polygon = PackedVector2Array(1466, -31, 1563, 161, 1403, 329, 1403, 169)
 
 [node name="Wall_3" type="CollisionPolygon2D" parent="Walls"]
-position = Vector2(-937, 489)
-polygon = PackedVector2Array(1146, -596, 1301, -274, 1123, 469, 852, 539)
+position = Vector2(-912, 488)
+polygon = PackedVector2Array(848, -472, 1152, -504, 1153, 503, 848, 544)
 
 [node name="Wall_4" type="CollisionPolygon2D" parent="Walls"]
 position = Vector2(-490, 567)
-polygon = PackedVector2Array(2149, 376, 2179, 625, 718, 675, 650, 391)
+polygon = PackedVector2Array(2146, 377, 2146, 673, 718, 675, 650, 377)
 
 [node name="Wall_5" type="CollisionPolygon2D" parent="Walls"]
-position = Vector2(155, 26)
-polygon = PackedVector2Array(1331, -121, 1254, -423, 1876, -251, 1477, 196, 1139, 131)
+position = Vector2(192, 24)
+polygon = PackedVector2Array(1331, -121, 1544, 24, 1402, 232, 1203, 78)
 
 [node name="Wall_6" type="CollisionPolygon2D" parent="Walls"]
-position = Vector2(-1346, 994)
-polygon = PackedVector2Array(1465, -144, 1618, 28, 1629, 196, 1215, -33)
+position = Vector2(-1408, 1040)
+polygon = PackedVector2Array(1402, -226, 1770, 30, 1629, 196, 1215, -33)
 
 [node name="Wall_7" type="CollisionPolygon2D" parent="Walls"]
-position = Vector2(-1175, -20)
-polygon = PackedVector2Array(1575, -94, 1664, 213, 1493, 271, 1238, -38)
+position = Vector2(-1160, 8)
+polygon = PackedVector2Array(1575, -94, 1664, 216, 1360, 216, 1238, -38)
 
 [node name="Wall_8" type="CollisionPolygon2D" parent="Walls"]
-position = Vector2(116, 1001)
+position = Vector2(96, 1008)
 polygon = PackedVector2Array(1645, -216, 1739, -34, 1259, 266, 1511, -37)
 
 [node name="Wall_9" type="CollisionPolygon2D" parent="Walls"]
 position = Vector2(-301, -50)
-polygon = PackedVector2Array(975, -15, 1965, 1, 1938, 265, 968, 278)
+polygon = PackedVector2Array(973, -14, 1965, 1, 1941, 266, 973, 266)
 
 [node name="Wall_10" type="CollisionPolygon2D" parent="Walls"]
 position = Vector2(207, 353)
-polygon = PackedVector2Array(1478, 100, 1913, 901, 1425, 703, 1350, 175)
+polygon = PackedVector2Array(1697, 143, 1697, 655, 1401, 655, 1401, 143)
 
 [node name="Hitbox_mob_in" type="StaticBody2D" parent="."]
 collision_layer = 128
