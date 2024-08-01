@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://bmmsch1uekekh" path="res://scene/smg_bullet.tscn" id="2_b7f82"]
 
 [node name="Smg" type="Node2D"]
+z_index = 20
 scale = Vector2(0.5, 0.5)
 script = ExtResource("1_n6u0x")
 bullet_scene = ExtResource("2_b7f82")

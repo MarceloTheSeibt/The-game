@@ -652,6 +652,30 @@ tracks/13/keys = {
 "update": 0,
 "values": [0.0]
 }
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("../Area2D/Shot_hitbox:position")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(13.3333, 40)]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("../Area2D/Shot_hitbox:rotation")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5w0x4"]
 _data = {
@@ -737,6 +761,16 @@ shape = SubResource("CapsuleShape2D_vn4cv")
 wait_time = 1.5
 one_shot = true
 
+[node name="Area2D" type="Area2D" parent="."]
+scale = Vector2(-1, 1)
+collision_layer = 2
+collision_mask = 2
+monitoring = false
+
+[node name="Shot_hitbox" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(13.3333, 40)
+shape = SubResource("CapsuleShape2D_vn4cv")
+
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_dying_animation_finish"]
 [connection signal="timeout" from="Stun_timer" to="." method="_on_stun_timer_timeout"]
 [connection signal="timeout" from="Reenable_world_hitbox_timer" to="." method="_on_reenable_world_hitbox_timer_timeout"]
@@ -744,3 +778,4 @@ one_shot = true
 [connection signal="timeout" from="zombie_skeleton/Crawl_timer" to="." method="_on_crawl_timer_timeout"]
 [connection signal="timeout" from="Hit_highlight_timer" to="." method="_on_hit_highlight_timer_timeout"]
 [connection signal="timeout" from="Hit_cooldown" to="." method="_on_hit_cooldown_timeout"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

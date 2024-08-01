@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://xadsabt7dyq4"]
+[gd_scene load_steps=11 format=3 uid="uid://xadsabt7dyq4"]
 
 [ext_resource type="Script" path="res://script/main.gd" id="1_i7a4b"]
 [ext_resource type="PackedScene" uid="uid://bci2jssjnyyhi" path="res://scene/room_test.tscn" id="3_2ohop"]
@@ -9,7 +9,6 @@
 [ext_resource type="PackedScene" uid="uid://dubaka086frrj" path="res://scene/player.tscn" id="7_brui6"]
 [ext_resource type="PackedScene" uid="uid://jg3eimhmhofg" path="res://scene/hud.tscn" id="8_ct4q1"]
 [ext_resource type="PackedScene" uid="uid://ctbr1q7xj7hxc" path="res://scene/bouncy_bullets.tscn" id="9_bggxd"]
-[ext_resource type="PackedScene" uid="uid://cfynjyb8xhwwe" path="res://scene/sharp_bullets.tscn" id="10_4bkb5"]
 
 [sub_resource type="Curve2D" id="Curve2D_4ya45"]
 _data = {
@@ -22,7 +21,6 @@ script = ExtResource("1_i7a4b")
 mob_zombie_scene = ExtResource("3_anpxf")
 pistol_scene = ExtResource("3_m8t0f")
 bouncy_bullets_scene = ExtResource("9_bggxd")
-sharp_bullets_scene = ExtResource("10_4bkb5")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 visible = false

@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://c4rpku6ibinv0" path="res://scene/pistol_bullet.tscn" id="2_rc5v1"]
 
 [node name="Pistol" type="Node2D"]
+z_index = 20
 scale = Vector2(0.4, 0.4)
 script = ExtResource("1_u2xxq")
 bullet_scene = ExtResource("2_rc5v1")

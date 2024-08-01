@@ -11,12 +11,14 @@ var player_arm_left
 var player_gun_point_1
 var player_gun_point_2
 
+
 func _ready():
 	$Fire_delay.start()
 	player = get_node("/root/Main/Player")
 	player_arm_left = get_node("/root/Main/Player/arm_left")
 	player_gun_point_1 = get_node("/root/Main/Player/arm_left/gun_point")
 	player_gun_point_2 = get_node("/root/Main/Player/arm_left/gun_point2")
+
 
 func _process(delta):
 	deltaN = delta

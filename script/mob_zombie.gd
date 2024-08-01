@@ -3,12 +3,13 @@ signal zombie_death(score: int, position: Vector2)
 signal mob_hit
 signal zombie_hits_player(damage: float)
 
+
 var health
 var prev_health  # Vida no frame anterior
 var speed
 var trying_to_get_in = true
 var score_to_player = 100
-var damage_to_player = 20
+var damage_to_player = 20  # Dano de cada hit
 var hit_on_cooldown = false
 # Início das variáveis de controle do engatinhar do zombie:
 # As hitboxes se movem junto das animações.
@@ -20,8 +21,13 @@ var stunned = false
 # Como não dá pra declarar delta, essa variável serve pra apontar para delta,
 # pois têm funções que precisam dela
 var deltaN
+var main
+var body_collision = true  # Controle para balas poderem atravessar quando preciso
+var alive
+
 
 func _ready():
+	alive = true
 	health = 100
 	prev_health = health
 	speed = 100
@@ -32,11 +38,34 @@ func _ready():
 	# Este é para os mobs saberem a posição da(s) entrada(s)
 	var room = get_node("/root/Main/Room")
 	room.window_pos.connect(self._window_position)
+	
+	main = get_node("/root/Main")
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+
 func _physics_process(delta):
 	deltaN = delta
+	
+	# Para as balas "atravessarem", é necessário mudar os layers de colisão dos mobs
+	# Basicamente transformar o corpo em uma Area2D temporariamente:
+	if main.sharp_bullets_active:
+		if body_collision:
+			$Area2D.set_monitoring(true)
+			set_collision_layer_value(2, false)
+			set_collision_mask_value(2, false)
+			$Area2D.set_collision_layer_value(2, true)
+			$Area2D.set_collision_mask_value(2, true)
+			body_collision = false
+	else:
+		if !body_collision:
+			$Area2D.set_monitoring(false)
+			set_collision_layer_value(2, true)
+			set_collision_mask_value(2, true)
+			$Area2D.set_collision_layer_value(2, false)
+			$Area2D.set_collision_mask_value(2, false)
+			body_collision = true
+			
+	
 	if velocity.x < 0:
 		$AnimatedSprite2D.flip_h = true
 	else:
@@ -58,15 +87,19 @@ func _physics_process(delta):
 		# Se morrer:
 		if health <= 0:
 			# 100 pontos por kill
-			zombie_death.emit(score_to_player, self.get_global_position())
-			$zombie_skeleton.visible = false
-			$AnimatedSprite2D.visible = true
-			$zombie_skeleton/AnimationPlayer2.stop()
-			$AnimatedSprite2D.stop()
-			$LightOccluder2D.visible = false
-			$AnimationPlayer.play("dying")
-			$Shot_hitbox.set_deferred("disabled", true)
-			$World_hitbox.set_deferred("disabled", true)
+			if alive:
+				zombie_death.emit(score_to_player, self.get_global_position())
+				$zombie_skeleton.visible = false
+				$AnimatedSprite2D.visible = true
+				$zombie_skeleton/AnimationPlayer2.stop()
+				$AnimatedSprite2D.stop()
+				$LightOccluder2D.visible = false
+				$AnimationPlayer.play("dying")
+				$Shot_hitbox.set_deferred("disabled", true)
+				$World_hitbox.set_deferred("disabled", true)
+				$zombie_skeleton/Shot_hitbox.set_deferred("disabled", true)
+				$Area2D/Shot_hitbox.set_deferred("disabled", true)
+				alive = false
 		prev_health = health
 
 
@@ -89,13 +122,12 @@ func _physics_process(delta):
 				$Hit_cooldown.start()
 				zombie_hits_player.emit(damage_to_player)
 				hit_on_cooldown = true
-			
+
 
 func _on_dying_animation_finish(anim_name):
 	if anim_name == "dying":
 		$AnimationPlayer.stop()
 		self.queue_free()
-
 
 
 func _player_position(pos):
@@ -174,3 +206,6 @@ func _on_hit_highlight_timer_timeout():
 func _on_hit_cooldown_timeout():
 	hit_on_cooldown = false
 
+# Para quando as balas estiverem "atravessando"
+func _on_area_2d_body_entered(body):
+	health -= body.damage

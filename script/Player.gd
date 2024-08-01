@@ -14,13 +14,12 @@ var screen_size
 var weapon_equipped = "none"
 var weapon_new
 
-# Called when the node enters the scene tree for the first time.
+
 func _ready():
 	screen_size = get_viewport_rect().size
 	position = Vector2(800, 500)
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	var velocity = Vector2.ZERO
 	var walk
@@ -40,7 +39,7 @@ func _process(delta):
 		
 		# Rotaciona os braços, seguindo o mouse
 		if arm_left_to_mouse != 0.00:
-			if weapon_equipped == "pistol":
+			if weapon_equipped == "pistol" or weapon_equipped == "smg":
 				$arm_left.rotate(arm_left_to_mouse)
 				$arm_right.hide()
 			else:
@@ -74,8 +73,6 @@ func _process(delta):
 				$player_skeleton/AnimationPlayer.stop()  # Stop na animação de "walk"
 				idle = true
 			$player_skeleton/AnimationPlayer.play("idle", -1, 1.0)
-			
-			
 			
 		position += velocity * delta
 		

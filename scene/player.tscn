@@ -23,6 +23,7 @@ offset = Vector2(53, 3)
 [node name="player_skeleton" parent="." instance=ExtResource("2_nri55")]
 
 [node name="arm_left" type="Sprite2D" parent="."]
+z_index = 16
 position = Vector2(65, 67)
 texture = ExtResource("2_t40xa")
 offset = Vector2(55, 3)

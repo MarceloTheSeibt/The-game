@@ -11,6 +11,7 @@ var player_arm_left
 var player_gun_point_1
 var player_gun_point_2
 
+
 func _ready():
 	$Fire_delay.start()
 	player = get_node("/root/Main/Player")
