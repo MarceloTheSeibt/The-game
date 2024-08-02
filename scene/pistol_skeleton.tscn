@@ -1,6 +1,6 @@
 [gd_scene load_steps=30 format=3 uid="uid://cltq33bfa7o72"]
 
-[ext_resource type="Script" path="res://script/Pistol.gd" id="1_kvf2n"]
+[ext_resource type="Script" path="res://script/pistol.gd" id="1_7wtbn"]
 [ext_resource type="Texture2D" uid="uid://qx4i4olghn47" path="res://asset/muzzle_flash/m_5.png" id="2_x48oc"]
 [ext_resource type="Texture2D" uid="uid://vyph28xgfu0h" path="res://asset/explosion_effects/1/frames/1_1.png" id="3_rkxvn"]
 [ext_resource type="Texture2D" uid="uid://b8pvipo3rq07w" path="res://asset/explosion_effects/1/frames/1_2.png" id="4_w1tg7"]
@@ -306,7 +306,7 @@ _data = {
 [node name="pistol_skeleton" type="Sprite2D"]
 scale = Vector2(-1, 1)
 offset = Vector2(-345.515, -187.328)
-script = ExtResource("1_kvf2n")
+script = ExtResource("1_7wtbn")
 
 [node name="muzzle_flash" type="Sprite2D" parent="."]
 visible = false

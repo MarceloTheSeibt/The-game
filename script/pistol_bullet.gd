@@ -2,8 +2,15 @@ extends RigidBody2D
 
 var velocity := Vector2.ZERO
 var collided := false
-var damage := 25  # A pistola deve dar mais dano que a smg
+var mob_hit: Node
 var main: Node
+var damage := 25.0  # A pistola deve dar mais dano que a smg
+# Modificador do power-up Bouncy Bullets:
+var richochet_damage_modifier := 0.85  # Aumentará com upgrades. 0.85 é o valor padrão
+# Modificador do power-up Sharp Bullets:
+var sharp_damage_modifier := 0.85  # Aumentará com upgrades. 0.85 é o valor padrão
+var collision_count := 0
+var max_collision_count := 2  # Aumentará com upgrades. 2 é o valor sem upgrades
 
 
 func _ready():
@@ -17,8 +24,8 @@ func _ready():
 
 func _physics_process(delta):
 	var collision_info := move_and_collide(velocity * delta)
-	
 	if collision_info:
+		
 		linear_velocity = linear_velocity.bounce(collision_info.get_normal())
 		
 		if linear_velocity.x < 0:
@@ -27,12 +34,19 @@ func _physics_process(delta):
 		set_global_rotation(atan(linear_velocity.y / linear_velocity.x))
 		
 		if collision_info.get_collider().get_class() == "CharacterBody2D":
-			var mob_hit := get_node("/root/Main/" + str(collision_info.get_collider().get_name()))
+			mob_hit = get_node("/root/Main/" + str(collision_info.get_collider().get_name()))
 			if mob_hit.health > 0:
 				mob_hit.health -= damage
 				
 		if !main.bouncy_bullets_active:
 			self.queue_free()  # Caso não esteja ativo o powerup
+		
+		collision_count += 1
+		# Dano diminui a cada richochete
+		damage *= richochet_damage_modifier
+		# Sem upgrades, o máximo de richochetes da bala é 2
+		if collision_count > max_collision_count:
+			self.queue_free()
 
 
 func _mob_hit():

@@ -15,7 +15,7 @@ func _ready():
 
 
 func _process(delta):
-	print(Engine.get_frames_per_second())
+
 	if bouncy_bullets_active:
 		$HUD/Bouncy_bullets.text = "Bouncy Bullets: " + str(snapped($Bouncy_bullets_duration.get_time_left(), 0))
 	if sharp_bullets_active:
@@ -83,7 +83,7 @@ func drop_powerup(pos):
 		pow_bouncy.set_global_position(pos)
 		add_child(pow_bouncy)
 		pow_bouncy.picked_up.connect(self._on_power_up_picked_up)
-	if number < 3:
+	elif number < 3:
 		var pow_sharp := sharp_bullets_scene.instantiate()
 		pow_sharp.set_global_position(pos)
 		add_child(pow_sharp)

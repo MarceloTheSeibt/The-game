@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://dubaka086frrj"]
 
-[ext_resource type="Script" path="res://script/Player.gd" id="1_qm1p0"]
+[ext_resource type="Script" path="res://script/player.gd" id="1_qm1p0"]
 [ext_resource type="PackedScene" uid="uid://c0pac7l2gdh4s" path="res://scene/pistol.tscn" id="2_1hau8"]
 [ext_resource type="PackedScene" uid="uid://bnlq34geuxnms" path="res://scene/character_body_2d.tscn" id="2_nri55"]
 [ext_resource type="Texture2D" uid="uid://f2stwt72emrs" path="res://asset/player_sprites/Warlord/player_arm.png" id="2_t40xa"]

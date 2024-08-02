@@ -384,6 +384,8 @@ polygon = PackedVector2Array(19.2216, 93.3405, 21.9584, 115.568, 15.2113, 116.57
 [node name="Bouncy_bullets" type="Area2D"]
 light_mask = 512
 scale = Vector2(0.2, 0.2)
+collision_layer = 32769
+collision_mask = 32769
 script = ExtResource("1_015un")
 
 [node name="Outline" type="Polygon2D" parent="."]

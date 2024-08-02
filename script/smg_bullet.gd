@@ -4,8 +4,14 @@ var screen_size: Vector2
 var mob_hit: Node
 var velocity := Vector2.ZERO
 var collided := false
-var damage := 15
 var main: Node
+var damage := 15.0
+# Modificador do power-up Bouncy Bullets:
+var richochet_damage_modifier := 0.85  # Aumentará com upgrades. 0.85 é o valor padrão
+# Modificador do power-up Sharp Bullets:
+var sharp_damage_modifier := 0.85  # Aumentará com upgrades. 0.85 é o valor padrão
+var collision_count := 0
+var max_collision_count := 2  # Aumentará com upgrades. 2 é o valor sem upgrades
 
 
 func _ready():
@@ -21,6 +27,7 @@ func _physics_process(delta):
 
 	var collision_info := move_and_collide(velocity * delta)
 	if collision_info:
+
 		linear_velocity = linear_velocity.bounce(collision_info.get_normal())
 		
 		if linear_velocity.x < 0:
@@ -35,7 +42,13 @@ func _physics_process(delta):
 				
 		if !main.bouncy_bullets_active:
 			self.queue_free()  # Caso não esteja ativo o powerup
-
+		
+		collision_count += 1
+		# Dano diminui a cada richochete
+		damage *= richochet_damage_modifier
+		# Sem upgrades, o máximo de richochetes da bala é 2
+		if collision_count > max_collision_count:
+			self.queue_free()
 
 
 

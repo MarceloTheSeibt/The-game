@@ -209,3 +209,5 @@ func _on_hit_cooldown_timeout():
 # Para quando as balas estiverem "atravessando"
 func _on_area_2d_body_entered(body):
 	health -= body.damage
+	# A cada mob atravessado, a bala perde dano
+	body.damage *= body.sharp_damage_modifier

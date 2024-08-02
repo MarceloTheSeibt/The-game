@@ -1,6 +1,6 @@
 [gd_scene load_steps=14 format=3 uid="uid://bnlq34geuxnms"]
 
-[ext_resource type="Script" path="res://script/character_body_2d.gd" id="1_0ojcl"]
+[ext_resource type="Script" path="res://script/player_body.gd" id="1_3jskk"]
 [ext_resource type="Texture2D" uid="uid://dsn2cickcwql8" path="res://asset/player_sprites/Warlord/player_full_exploded.png" id="2_4kvxi"]
 [ext_resource type="Texture2D" uid="uid://ckfsujeysq37d" path="res://asset/lighting/spot.png" id="3_xpra7"]
 [ext_resource type="Texture2D" uid="uid://c5o1x3klfxweq" path="res://asset/player_sprites/Warlord/PNG/Vector Parts/Face_01.png" id="4_5cclo"]
@@ -452,7 +452,7 @@ collision_mask = 3221225473
 floor_stop_on_slope = false
 floor_constant_speed = true
 floor_block_on_wall = false
-script = ExtResource("1_0ojcl")
+script = ExtResource("1_3jskk")
 
 [node name="Shadow_baked" type="PointLight2D" parent="."]
 position = Vector2(0, 250)

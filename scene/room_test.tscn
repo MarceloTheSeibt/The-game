@@ -122,3 +122,12 @@ scale = Vector2(0.2, 0.2)
 [node name="Buy_smg" parent="." instance=ExtResource("6_ekpjy")]
 position = Vector2(1229, 127)
 scale = Vector2(0.2, 0.2)
+
+[node name="Power_up_safe_area" type="Area2D" parent="."]
+position = Vector2(896, 560)
+collision_layer = 32768
+collision_mask = 32768
+
+[node name="Power_up_safe_area" type="CollisionPolygon2D" parent="Power_up_safe_area"]
+position = Vector2(400, 468)
+polygon = PackedVector2Array(-856, -740, 128, -740, 264, -140, -1008, -132)

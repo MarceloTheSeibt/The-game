@@ -55,7 +55,7 @@ func _on_fire_delay_timeout():
 func _on_pistol_shot(bullet):
 	var pos: Vector2 = $bullet_point.get_global_position()
 	var rot: float = $bullet_point.get_global_rotation()
-	var bullet_speed := 800000
+	var bullet_speed := 600000
 	bullet.set_global_position(pos)
 	bullet.set_global_rotation(rot)
 	# Direção da bala

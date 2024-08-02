@@ -13,6 +13,8 @@ var speed := 275
 var screen_size: Vector2
 var weapon_equipped := "none"
 var weapon_new: Node
+var walk: bool
+var idle: bool
 
 
 func _ready():
@@ -21,11 +23,11 @@ func _ready():
 
 
 func _process(delta):
+	
 	var velocity := Vector2.ZERO
-	var walk: bool
-	var idle: bool
 	var arm_left_pos: Vector2 = $arm_left.position  # Posição relativa
 	arm_left_position.emit(arm_left_pos)
+
 	
 	if health > 0:
 		# Posição absoluta

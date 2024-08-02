@@ -1,13 +1,13 @@
 [gd_scene load_steps=4 format=3 uid="uid://c0pac7l2gdh4s"]
 
+[ext_resource type="Script" path="res://script/pistol.gd" id="1_7af8t"]
 [ext_resource type="PackedScene" uid="uid://cltq33bfa7o72" path="res://scene/pistol_skeleton.tscn" id="1_qtrpf"]
-[ext_resource type="Script" path="res://script/Pistol.gd" id="1_u2xxq"]
 [ext_resource type="PackedScene" uid="uid://c4rpku6ibinv0" path="res://scene/pistol_bullet.tscn" id="2_rc5v1"]
 
 [node name="Pistol" type="Node2D"]
 z_index = 20
 scale = Vector2(0.4, 0.4)
-script = ExtResource("1_u2xxq")
+script = ExtResource("1_7af8t")
 bullet_scene = ExtResource("2_rc5v1")
 metadata/_edit_group_ = true
 
