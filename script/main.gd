@@ -5,20 +5,17 @@ extends Node
 @export var sharp_bullets_scene: PackedScene
 
 
-var zombie_scene
-var pistol_new
-var score = 0
-var bouncy_bullets_active = false  # Teste, deixar false depois
-var sharp_bullets_active = false
+var score := 0
+var bouncy_bullets_active := false  # Teste, deixar false depois
+var sharp_bullets_active := false
 
 
 func _ready():
 	$Zombie_spawn_timer.start()
-	load("res://scene/sharp_bullets.tscn")
-
 
 
 func _process(delta):
+	print(Engine.get_frames_per_second())
 	if bouncy_bullets_active:
 		$HUD/Bouncy_bullets.text = "Bouncy Bullets: " + str(snapped($Bouncy_bullets_duration.get_time_left(), 0))
 	if sharp_bullets_active:
@@ -48,11 +45,11 @@ func _process(delta):
 
 
 func _on_zombies_spawn_timer_timeout():
-	var zombie
+	var zombie: Node
 	var mob_spawn_location = $MobPath/MobSpawnLocation
 	# Escolhe um local aleatório de spawn
 	mob_spawn_location.progress_ratio = randf()
-	var zombie_new = mob_zombie_scene.instantiate()
+	var zombie_new := mob_zombie_scene.instantiate()
 	zombie_new.position = mob_spawn_location.position
 	zombie_new.set_modulate(Color("#505050"))
 	add_child(zombie_new)
@@ -80,14 +77,14 @@ func _on_player_hit_by_zombie(damage):
 	
 	
 func drop_powerup(pos):
-	var number = randi_range(1, 10)
+	var number := randi_range(1, 10)
 	if number > 8:
-		var pow_bouncy = bouncy_bullets_scene.instantiate()
+		var pow_bouncy := bouncy_bullets_scene.instantiate()
 		pow_bouncy.set_global_position(pos)
 		add_child(pow_bouncy)
 		pow_bouncy.picked_up.connect(self._on_power_up_picked_up)
 	if number < 3:
-		var pow_sharp = sharp_bullets_scene.instantiate()
+		var pow_sharp := sharp_bullets_scene.instantiate()
 		pow_sharp.set_global_position(pos)
 		add_child(pow_sharp)
 		pow_sharp.picked_up.connect(self._on_power_up_picked_up)

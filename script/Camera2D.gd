@@ -3,7 +3,7 @@ extends Camera2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	var player = get_node("/root/Main/Player")
+	var player := get_node("/root/Main/Player")
 	player.player_position.connect(self._player_position)
 
 

@@ -2,14 +2,14 @@ extends Node2D
 @export var bullet_scene: PackedScene
 signal shot
 
-var smg_flipped = false 
+var smg_flipped := false 
 # Como não dá pra declarar delta, essa variável serve pra apontar para delta,
 # pois têm funções que precisam dela
-var deltaN  
-var player
-var player_arm_left
-var player_gun_point_1
-var player_gun_point_2
+var deltaN: float  
+var player: Node
+var player_arm_left: Node
+var player_gun_point_1: Node
+var player_gun_point_2: Node
 
 
 func _ready():
@@ -47,17 +47,17 @@ func _process(delta):
 
 func _on_fire_delay_timeout():
 	$smg_skeleton/AnimationPlayer.play("shoot")
-	var bullet = bullet_scene.instantiate()
+	var bullet := bullet_scene.instantiate()
 	add_child(bullet)
 	shot.emit(bullet)
 
 
 func _on_smg_shot(bullet):
-	var pos = $bullet_point.get_global_position()
-	var rot = $bullet_point.get_global_rotation()
+	var pos: Vector2 = $bullet_point.get_global_position()
+	var rot: float = $bullet_point.get_global_rotation()
 	var bullet_speed = 500000
 	bullet.set_global_position(pos)
 	bullet.set_global_rotation(rot)
 	# Direção da bala
-	var bullet_direction = Vector2(cos(rot), sin(rot))
+	var bullet_direction := Vector2(cos(rot), sin(rot))
 	bullet.apply_central_impulse(bullet_direction * bullet_speed * deltaN) 

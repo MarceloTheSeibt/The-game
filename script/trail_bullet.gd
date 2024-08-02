@@ -1,7 +1,7 @@
 extends Line2D
 
-var lenght = 50
-var point = Vector2()
+var lenght := 50
+var point := Vector2()
 
 
 func _process(delta):

@@ -2,7 +2,7 @@ extends Area2D
 # Avisa o Main que foi coletado
 signal picked_up(powerup_name: String)
 
-var player
+var player: Node
 
 
 func _ready():

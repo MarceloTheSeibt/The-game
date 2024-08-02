@@ -7,12 +7,12 @@ signal arm_left_position
 signal player_position
 signal player_death
 
-var health = 100000
-var on_death = true  # Controle da função de morte
-var speed = 275
-var screen_size
-var weapon_equipped = "none"
-var weapon_new
+var health := 100000
+var on_death := true  # Controle da função de morte
+var speed := 275
+var screen_size: Vector2
+var weapon_equipped := "none"
+var weapon_new: Node
 
 
 func _ready():
@@ -21,10 +21,10 @@ func _ready():
 
 
 func _process(delta):
-	var velocity = Vector2.ZERO
-	var walk
-	var idle
-	var arm_left_pos = $arm_left.position  # Posição relativa
+	var velocity := Vector2.ZERO
+	var walk: bool
+	var idle: bool
+	var arm_left_pos: Vector2 = $arm_left.position  # Posição relativa
 	arm_left_position.emit(arm_left_pos)
 	
 	if health > 0:
@@ -33,7 +33,7 @@ func _process(delta):
 		$arm_right.set_global_position($player_skeleton/Skeleton2D/hip/body/arm_right.get_global_position())
 		
 		# Snapped serve para arredondar float
-		var arm_left_to_mouse = snapped($arm_left.get_angle_to(get_global_mouse_position()), 0.01)
+		var arm_left_to_mouse: float = snapped($arm_left.get_angle_to(get_global_mouse_position()), 0.01)
 
 		
 		

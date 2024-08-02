@@ -1,7 +1,9 @@
 extends Area2D
 signal picked_up(powerup_name: String)
 
-var player
+var player: Node
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$Start_blinking_timer.start()

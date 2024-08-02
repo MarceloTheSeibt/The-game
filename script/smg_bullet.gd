@@ -1,11 +1,11 @@
 extends RigidBody2D
 
-var screen_size
-var mob_hit
-var velocity = Vector2.ZERO
-var collided = false
-var damage = 15
-var main
+var screen_size: Vector2
+var mob_hit: Node
+var velocity := Vector2.ZERO
+var collided := false
+var damage := 15
+var main: Node
 
 
 func _ready():
@@ -19,7 +19,7 @@ func _ready():
 
 func _physics_process(delta):
 
-	var collision_info = move_and_collide(velocity * delta)
+	var collision_info := move_and_collide(velocity * delta)
 	if collision_info:
 		linear_velocity = linear_velocity.bounce(collision_info.get_normal())
 		

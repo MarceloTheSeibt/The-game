@@ -3,7 +3,7 @@ extends StaticBody2D
 signal window_pos
 
 
-var win_pos
+var win_pos: Vector2
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	win_pos = $Wall/Mob_in.get_global_position()

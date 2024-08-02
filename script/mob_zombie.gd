@@ -4,26 +4,26 @@ signal mob_hit
 signal zombie_hits_player(damage: float)
 
 
-var health
-var prev_health  # Vida no frame anterior
-var speed
-var trying_to_get_in = true
-var score_to_player = 100
-var damage_to_player = 20  # Dano de cada hit
-var hit_on_cooldown = false
+var health: int
+var prev_health: int  # Vida no frame anterior
+var speed: int
+var trying_to_get_in := true
+var score_to_player := 100
+var damage_to_player := 20  # Dano de cada hit
+var hit_on_cooldown := false
 # Início das variáveis de controle do engatinhar do zombie:
 # As hitboxes se movem junto das animações.
-var crawl_speed = null
-var crawl_timer_off = true
-var getting_up
+var crawl_speed = null  # Essa variável tem que ser dinâmica
+var crawl_timer_off := true
+var getting_up: bool
 # Fim das variáveis de controle do engatinhar do zombie
-var stunned = false
+var stunned := false
 # Como não dá pra declarar delta, essa variável serve pra apontar para delta,
 # pois têm funções que precisam dela
-var deltaN
-var main
-var body_collision = true  # Controle para balas poderem atravessar quando preciso
-var alive
+var deltaN: float
+var main: Node
+var body_collision := true  # Controle para balas poderem atravessar quando preciso
+var alive: bool
 
 
 func _ready():
@@ -33,10 +33,10 @@ func _ready():
 	speed = 100
 	$AnimatedSprite2D.play("walk")
 	# Este signal faz o player avisar a sua posição para o mob a cada frame
-	var player = get_node("/root/Main/Player")
+	var player := get_node("/root/Main/Player")
 	player.player_position.connect(self._player_position)
 	# Este é para os mobs saberem a posição da(s) entrada(s)
-	var room = get_node("/root/Main/Room")
+	var room := get_node("/root/Main/Room")
 	room.window_pos.connect(self._window_position)
 	
 	main = get_node("/root/Main")
@@ -136,7 +136,7 @@ func _player_position(pos):
 
 		# Se não estiver stunado e já estiver na casa, segue o player e se move
 		if !stunned and !trying_to_get_in:
-			var angle_to_player = self.get_angle_to(pos)
+			var angle_to_player := self.get_angle_to(pos)
 			velocity = Vector2(cos(angle_to_player), sin(angle_to_player))
 			if velocity.length() > 0: 
 				velocity = velocity.normalized()
@@ -191,7 +191,7 @@ func _window_position(win_pos):
 	# Se o zombie estiver vivo, não stunado e do lado de fora:
 	if trying_to_get_in and !stunned and health > 0:
 		if deltaN is float:
-			var angle_to_in = self.get_angle_to(win_pos)
+			var angle_to_in := self.get_angle_to(win_pos)
 			velocity = Vector2(cos(angle_to_in), sin(angle_to_in))
 			if velocity.length() > 0: 
 				velocity = velocity.normalized()
