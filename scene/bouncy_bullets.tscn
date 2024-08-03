@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://ctbr1q7xj7hxc"]
 
-[ext_resource type="Script" path="res://script/bouncy_bullets.gd" id="1_015un"]
+[ext_resource type="Script" path="res://script/power_up.gd" id="1_kpc8l"]
 [ext_resource type="Texture2D" uid="uid://6obg0ly2lmpw" path="res://asset/powerups/bouncy_bullets.png" id="1_sqwo6"]
 [ext_resource type="Texture2D" uid="uid://bvuswpjfitn44" path="res://asset/lighting/lens_flare.png" id="2_cjvxt"]
 [ext_resource type="Texture2D" uid="uid://ckfsujeysq37d" path="res://asset/lighting/spot.png" id="2_rabgq"]
@@ -386,7 +386,7 @@ light_mask = 512
 scale = Vector2(0.2, 0.2)
 collision_layer = 32769
 collision_mask = 32769
-script = ExtResource("1_015un")
+script = ExtResource("1_kpc8l")
 
 [node name="Outline" type="Polygon2D" parent="."]
 self_modulate = Color(0, 0, 0, 1)

@@ -1,14 +1,14 @@
 extends Area2D
-signal picked_up(powerup_name: String)
+signal picked_up(power_up_name: String)
 
+var power_up_name: String
 var player: Node
-var safe_spawn_area
-var safe_pos
+var safe_spawn_area: Node
+var safe_pos: Vector2
 var is_in_safe_place := true
 var speed := 300
 
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	$Start_blinking_timer.start()
 	$AnimationPlayer.play("shining")
@@ -27,7 +27,7 @@ func _process(delta):
 			position += velocity * delta * speed
 
 	if self.overlaps_body(player):
-		picked_up.emit("sharp_bullets")
+		picked_up.emit(power_up_name)
 		self.queue_free()
 
 

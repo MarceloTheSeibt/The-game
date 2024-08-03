@@ -1,4 +1,4 @@
-[gd_scene load_steps=86 format=3 uid="uid://dnlhvjb4dsbqm"]
+[gd_scene load_steps=87 format=3 uid="uid://dnlhvjb4dsbqm"]
 
 [ext_resource type="Texture2D" uid="uid://csyfi11qhjprq" path="res://asset/zombie_villager/Zombie_Villager_1/PNG/PNG Sequences/Walking/0_Zombie_Villager_Walking_020.png" id="1_5sqwe"]
 [ext_resource type="Script" path="res://script/mob_zombie.gd" id="1_nkb4c"]
@@ -74,6 +74,7 @@
 [ext_resource type="PackedScene" uid="uid://mjgm86w8uwqb" path="res://scene/zombie_skeleton.tscn" id="72_b25gj"]
 [ext_resource type="Animation" uid="uid://81x4qj63dgcq" path="res://scene/animations/crawl.res" id="73_4la6k"]
 [ext_resource type="Animation" uid="uid://elqil1jhl16k" path="res://scene/animations/lay_down.res" id="74_j1n56"]
+[ext_resource type="PackedScene" uid="uid://dwjx7h8ii3j0b" path="res://scene/blood_splash.tscn" id="75_4xfuj"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_bc3lr"]
 animations = [{
@@ -307,10 +308,6 @@ animations = [{
 "name": &"walk",
 "speed": 30.0
 }]
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8a8yk"]
-radius = 90.0
-height = 186.667
 
 [sub_resource type="Animation" id="Animation_n70nf"]
 length = 0.001
@@ -688,13 +685,20 @@ _data = {
 radius = 180.0
 height = 533.333
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8a8yk"]
+radius = 90.0
+height = 186.667
+
 [node name="mob_zombie" type="CharacterBody2D" groups=["zombies"]]
 modulate = Color(0.384314, 0, 0, 1)
 light_mask = 513
 scale = Vector2(0.3, 0.3)
 collision_layer = 2147483786
 collision_mask = 2147483786
+motion_mode = 1
+wall_min_slide_angle = 0.0
 script = ExtResource("1_nkb4c")
+blood_splash_scene = ExtResource("75_4xfuj")
 
 [node name="Shadow_baked" type="PointLight2D" parent="."]
 position = Vector2(0, 285)
@@ -709,10 +713,6 @@ texture_scale = 6.85
 sprite_frames = SubResource("SpriteFrames_bc3lr")
 animation = &"dying"
 flip_h = true
-
-[node name="World_hitbox" type="CollisionShape2D" parent="."]
-position = Vector2(-53.3333, 90)
-shape = SubResource("CapsuleShape2D_8a8yk")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -753,10 +753,6 @@ one_shot = true
 [node name="Hit_highlight_timer" type="Timer" parent="."]
 wait_time = 0.3
 
-[node name="Shot_hitbox" type="CollisionShape2D" parent="."]
-position = Vector2(13.3333, 40)
-shape = SubResource("CapsuleShape2D_vn4cv")
-
 [node name="Hit_cooldown" type="Timer" parent="."]
 wait_time = 1.5
 one_shot = true
@@ -768,6 +764,14 @@ collision_mask = 2
 monitoring = false
 
 [node name="Shot_hitbox" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(13.3333, 40)
+shape = SubResource("CapsuleShape2D_vn4cv")
+
+[node name="World_hitbox" type="CollisionShape2D" parent="."]
+position = Vector2(-53.3333, 90)
+shape = SubResource("CapsuleShape2D_8a8yk")
+
+[node name="Shot_hitbox" type="CollisionShape2D" parent="."]
 position = Vector2(13.3333, 40)
 shape = SubResource("CapsuleShape2D_vn4cv")
 

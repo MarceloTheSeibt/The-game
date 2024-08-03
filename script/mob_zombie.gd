@@ -1,6 +1,7 @@
 extends CharacterBody2D
+@export var blood_splash_scene: PackedScene
+
 signal zombie_death(score: int, position: Vector2)
-signal mob_hit
 signal zombie_hits_player(damage: float)
 
 
@@ -24,6 +25,7 @@ var deltaN: float
 var main: Node
 var body_collision := true  # Controle para balas poderem atravessar quando preciso
 var alive: bool
+var is_flipped := false
 
 
 func _ready():
@@ -68,12 +70,17 @@ func _physics_process(delta):
 	
 	if velocity.x < 0:
 		$AnimatedSprite2D.flip_h = true
+		is_flipped = true
 	else:
 		$AnimatedSprite2D.flip_h = false
+		is_flipped = false
 		
 	var collision_info = move_and_collide(velocity * delta)
 	
 	if health < prev_health:
+		# Efeito blood splash:
+		var blood_splash := blood_splash_scene.instantiate()
+		add_child(blood_splash)
 		# Efeito "tomou um hit"
 		self.set_modulate(Color("#620000"))
 		$Hit_highlight_timer.start()
@@ -184,7 +191,8 @@ func _on_crawl_timer_timeout():
 
 # Para evitar de colidir várias vezes com a mesma hitbox (pensar em alternativas)
 func _on_reenable_world_hitbox_timer_timeout():
-	$World_hitbox.set_deferred("disabled", false)
+	if alive:
+		$World_hitbox.set_deferred("disabled", false)
 
 
 func _window_position(win_pos):
@@ -207,7 +215,7 @@ func _on_hit_cooldown_timeout():
 	hit_on_cooldown = false
 
 # Para quando as balas estiverem "atravessando"
-func _on_area_2d_body_entered(body):
-	health -= body.damage
+func _on_area_2d_body_entered(bullet):
+	health -= bullet.damage
 	# A cada mob atravessado, a bala perde dano
-	body.damage *= body.sharp_damage_modifier
+	bullet.damage *= bullet.sharp_damage_modifier

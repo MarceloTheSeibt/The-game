@@ -1,31 +1,34 @@
-[gd_scene load_steps=6 format=3 uid="uid://bmmsch1uekekh"]
+[gd_scene load_steps=7 format=3 uid="uid://bmmsch1uekekh"]
 
-[ext_resource type="Script" path="res://script/smg_bullet.gd" id="1_l05gt"]
-[ext_resource type="Texture2D" uid="uid://jelrtvm2avlv" path="res://asset/guns_1/bullet.png" id="2_o8rvp"]
-[ext_resource type="PackedScene" uid="uid://cse7xtj30euvg" path="res://scene/trail_bullet.tscn" id="3_5223k"]
+[ext_resource type="Script" path="res://script/low_calliber_bullet.gd" id="1_dnmfo"]
+[ext_resource type="PackedScene" uid="uid://chakykwd2m8cn" path="res://scene/fire_bullet_particles.tscn" id="2_dm0c2"]
+[ext_resource type="Texture2D" uid="uid://jelrtvm2avlv" path="res://asset/guns_1/bullet.png" id="3_sbid4"]
+[ext_resource type="PackedScene" uid="uid://cse7xtj30euvg" path="res://scene/trail_bullet.tscn" id="4_l320m"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nbdah"]
 radius = 24.0
-height = 148.0
+height = 426.667
 
 [sub_resource type="Curve" id="Curve_534bg"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[node name="smg_bullet" type="RigidBody2D" groups=["bullets"]]
+[node name="low_calliber_bullet" type="RigidBody2D" groups=["bullets"]]
 modulate = Color(0.314316, 0.314316, 0.314316, 1)
 top_level = true
 collision_layer = 0
 collision_mask = 518
 mass = 0.01
 gravity_scale = 0.0
-script = ExtResource("1_l05gt")
+script = ExtResource("1_dnmfo")
+fire_bullets_scene = ExtResource("2_dm0c2")
 
 [node name="Bullet" type="Sprite2D" parent="."]
 scale = Vector2(0.015, 0.015)
-texture = ExtResource("2_o8rvp")
+texture = ExtResource("3_sbid4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-11, 0)
 rotation = 1.5708
 scale = Vector2(0.075, 0.075)
 shape = SubResource("CapsuleShape2D_nbdah")
@@ -33,7 +36,7 @@ shape = SubResource("CapsuleShape2D_nbdah")
 [node name="Despawn_no_hit_timer" type="Timer" parent="."]
 wait_time = 3.0
 
-[node name="Trail_bullet" parent="." instance=ExtResource("3_5223k")]
+[node name="Trail_bullet" parent="." instance=ExtResource("4_l320m")]
 width = 6.0
 width_curve = SubResource("Curve_534bg")
 default_color = Color(1, 1, 1, 0.784314)

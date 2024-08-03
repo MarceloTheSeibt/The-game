@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://chakykwd2m8cn"]
+
+[ext_resource type="Script" path="res://script/particles.gd" id="1_5ksbk"]
+
+[sub_resource type="Curve" id="Curve_0aq8b"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="Fire_bullet_particles" type="CPUParticles2D"]
+show_behind_parent = true
+emitting = false
+amount = 30
+lifetime = 0.3
+emission_shape = 1
+emission_sphere_radius = 8.0
+direction = Vector2(-1, 0)
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_max = 110.1
+scale_amount_min = 10.0
+scale_amount_max = 10.0
+scale_amount_curve = SubResource("Curve_0aq8b")
+color = Color(0.670588, 0, 0, 1)
+script = ExtResource("1_5ksbk")
+
+[node name="Lifetime_timer" type="Timer" parent="."]
+wait_time = 2.0
+
+[connection signal="timeout" from="Lifetime_timer" to="." method="_on_lifetime_timer_timeout"]

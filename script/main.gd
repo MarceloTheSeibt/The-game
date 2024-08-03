@@ -1,8 +1,8 @@
 extends Node
 @export var mob_zombie_scene: PackedScene
 @export var pistol_scene: PackedScene
-@export var bouncy_bullets_scene: PackedScene
 @export var sharp_bullets_scene: PackedScene
+@export var bouncy_bullets_scene: PackedScene
 
 
 var score := 0
@@ -15,15 +15,15 @@ func _ready():
 
 
 func _process(delta):
-
 	if bouncy_bullets_active:
 		$HUD/Bouncy_bullets.text = "Bouncy Bullets: " + str(snapped($Bouncy_bullets_duration.get_time_left(), 0))
 	if sharp_bullets_active:
 		$HUD/Sharp_bullets.text = "Sharp Bullets: " + str(snapped($Sharp_bullets_duration.get_time_left(), 0))
 	
-	$HUD/Player_health.text = str($Player.health)
+	$HUD/Health_bar/Progress_bar.set_value($Player.health)
+	$HUD/Health_bar/Progress_bar/Label.text = str($HUD/Health_bar/Progress_bar.value) + "/" + str($Player.max_health)
 	if $Player.health <= 0:
-		$HUD/Player_health.hide()
+		$HUD/Health_bar.hide()
 		$HUD/Score.hide()
 	# Se o player estiver na hitbox de compra da pistola:
 	if $Room/Buy_pistol.overlaps_body($Player/player_skeleton):
@@ -78,24 +78,27 @@ func _on_player_hit_by_zombie(damage):
 	
 func drop_powerup(pos):
 	var number := randi_range(1, 10)
+	var power_up: Node
 	if number > 8:
-		var pow_bouncy := bouncy_bullets_scene.instantiate()
-		pow_bouncy.set_global_position(pos)
-		add_child(pow_bouncy)
-		pow_bouncy.picked_up.connect(self._on_power_up_picked_up)
+		power_up = bouncy_bullets_scene.instantiate()
+		power_up.power_up_name = "bouncy_bullets"
+		power_up.set_global_position(pos)
+		add_child(power_up)
+		power_up.picked_up.connect(self._on_power_up_picked_up)
 	elif number < 3:
-		var pow_sharp := sharp_bullets_scene.instantiate()
-		pow_sharp.set_global_position(pos)
-		add_child(pow_sharp)
-		pow_sharp.picked_up.connect(self._on_power_up_picked_up)
+		power_up = sharp_bullets_scene.instantiate()
+		power_up.power_up_name = "sharp_bullets"
+		power_up.set_global_position(pos)
+		add_child(power_up)
+		power_up.picked_up.connect(self._on_power_up_picked_up)
 
 
-func _on_power_up_picked_up(power_up_name):
-	if power_up_name == "bouncy_bullets":
+func _on_power_up_picked_up(picked_up_power_up):
+	if picked_up_power_up == "bouncy_bullets":
 		bouncy_bullets_active = true
 		$Bouncy_bullets_duration.start()
 		$HUD/Bouncy_bullets.show()
-	if power_up_name == "sharp_bullets":
+	if picked_up_power_up == "sharp_bullets":
 		sharp_bullets_active = true
 		$Sharp_bullets_duration.start()
 		$HUD/Sharp_bullets.show()

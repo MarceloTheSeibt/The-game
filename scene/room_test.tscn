@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bci2jssjnyyhi"]
+[gd_scene load_steps=8 format=3 uid="uid://bci2jssjnyyhi"]
 
 [ext_resource type="Script" path="res://script/room_test.gd" id="1_ky845"]
 [ext_resource type="Texture2D" uid="uid://b7btu6fcq4d4x" path="res://asset/floor_test.png" id="1_wmk63"]
@@ -6,6 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://ckfsujeysq37d" path="res://asset/lighting/spot.png" id="3_u15at"]
 [ext_resource type="PackedScene" uid="uid://chfmmr100ss3o" path="res://scene/prop_pistol.tscn" id="5_glwrp"]
 [ext_resource type="PackedScene" uid="uid://pr6oqtac5prh" path="res://scene/prop_smg.tscn" id="6_ekpjy"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4jrhh"]
+radius = 64.4981
 
 [node name="StaticBody2D" type="StaticBody2D"]
 collision_layer = 41
@@ -25,7 +28,7 @@ scale = Vector2(0.5, 0.4)
 texture = ExtResource("2_h7twx")
 
 [node name="Mob_in" type="Node2D" parent="Wall"]
-position = Vector2(1230, -250)
+position = Vector2(1260, -257.5)
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 position = Vector2(1632.22, 426)
@@ -65,39 +68,39 @@ collision_mask = 4
 
 [node name="Wall_1" type="CollisionPolygon2D" parent="Walls"]
 position = Vector2(109, 15)
-polygon = PackedVector2Array(1466, -31, 1563, 161, 1403, 329, 1403, 169)
+polygon = PackedVector2Array(1466, -31, 1491, 265, 1411, 313, 1379, 169)
 
 [node name="Wall_3" type="CollisionPolygon2D" parent="Walls"]
 position = Vector2(-912, 488)
-polygon = PackedVector2Array(848, -472, 1152, -504, 1153, 503, 848, 544)
+polygon = PackedVector2Array(848, -472, 1152, -504, 1288, -296, 1192, 96, 1112, 472, 848, 544)
 
 [node name="Wall_4" type="CollisionPolygon2D" parent="Walls"]
 position = Vector2(-490, 567)
-polygon = PackedVector2Array(2146, 377, 2146, 673, 718, 675, 650, 377)
+polygon = PackedVector2Array(2146, 377, 2146, 673, 718, 675, 698, 393)
 
 [node name="Wall_5" type="CollisionPolygon2D" parent="Walls"]
-position = Vector2(192, 24)
-polygon = PackedVector2Array(1331, -121, 1544, 24, 1402, 232, 1203, 78)
+position = Vector2(160, 64)
+polygon = PackedVector2Array(1331, -121, 1544, 24, 1402, 232, 1216, 96)
 
 [node name="Wall_6" type="CollisionPolygon2D" parent="Walls"]
-position = Vector2(-1408, 1040)
-polygon = PackedVector2Array(1402, -226, 1770, 30, 1629, 196, 1215, -33)
+position = Vector2(-1376, 1000)
+polygon = PackedVector2Array(1448, -264, 1712, 48, 1629, 196, 1215, -33)
 
 [node name="Wall_7" type="CollisionPolygon2D" parent="Walls"]
 position = Vector2(-1160, 8)
-polygon = PackedVector2Array(1575, -94, 1664, 216, 1360, 216, 1238, -38)
+polygon = PackedVector2Array(1575, -94, 1664, 216, 1440, 296, 1238, -38)
 
 [node name="Wall_8" type="CollisionPolygon2D" parent="Walls"]
-position = Vector2(96, 1008)
+position = Vector2(80, 968)
 polygon = PackedVector2Array(1645, -216, 1739, -34, 1259, 266, 1511, -37)
 
 [node name="Wall_9" type="CollisionPolygon2D" parent="Walls"]
 position = Vector2(-301, -50)
-polygon = PackedVector2Array(973, -14, 1965, 1, 1941, 266, 973, 266)
+polygon = PackedVector2Array(973, 58, 1965, 1, 1941, 266, 973, 266)
 
 [node name="Wall_10" type="CollisionPolygon2D" parent="Walls"]
 position = Vector2(207, 353)
-polygon = PackedVector2Array(1697, 143, 1697, 655, 1401, 655, 1401, 143)
+polygon = PackedVector2Array(1417, 159, 1697, 655, 1449, 647, 1409, 407, 1337, 191)
 
 [node name="Hitbox_mob_in" type="StaticBody2D" parent="."]
 collision_layer = 128
@@ -110,10 +113,17 @@ polygon = PackedVector2Array(997, -100, 1045, -110, 1058, -9, 1016, 5)
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="Walk_boundaries" type="CollisionPolygon2D" parent="StaticBody2D"]
-visible = false
 position = Vector2(400, 468)
 build_mode = 1
-polygon = PackedVector2Array(-23, -243, 1084, -251, 1222, 471, -180, 474)
+polygon = PackedVector2Array(-23, -243, 152, -612, 280, -260, 1084, -251, 1222, 471, -180, 474)
+
+[node name="AreaTest" type="Area2D" parent="StaticBody2D"]
+collision_layer = 3221225473
+collision_mask = 3221225473
+
+[node name="AreaTest" type="CollisionShape2D" parent="StaticBody2D/AreaTest"]
+position = Vector2(552, 96)
+shape = SubResource("CircleShape2D_4jrhh")
 
 [node name="Buy_pistol" parent="." instance=ExtResource("5_glwrp")]
 position = Vector2(888, 127)

@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=3 uid="uid://dwjx7h8ii3j0b"]
+
+[ext_resource type="Script" path="res://script/particles.gd" id="1_1pq61"]
+
+[sub_resource type="Curve" id="Curve_0aq8b"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_exyho"]
+offsets = PackedFloat32Array(0, 0.486667)
+colors = PackedColorArray(0.54902, 0, 0, 1, 0.662745, 0.247059, 0, 1)
+
+[node name="Blood_splash" type="CPUParticles2D"]
+show_behind_parent = true
+emitting = false
+amount = 30
+lifetime = 0.6
+one_shot = true
+explosiveness = 1.0
+randomness = 1.0
+lifetime_randomness = 1.0
+spread = 35.28
+gravity = Vector2(0, 500)
+initial_velocity_min = 87.46
+initial_velocity_max = 350.08
+scale_amount_min = 10.0
+scale_amount_max = 15.0
+scale_amount_curve = SubResource("Curve_0aq8b")
+color_ramp = SubResource("Gradient_exyho")
+script = ExtResource("1_1pq61")
+
+[node name="Lifetime_timer" type="Timer" parent="."]
+wait_time = 0.6
+
+[connection signal="timeout" from="Lifetime_timer" to="." method="_on_lifetime_timer_timeout"]

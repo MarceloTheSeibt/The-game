@@ -1,10 +1,14 @@
 extends RigidBody2D
+@export var fire_bullets_scene: PackedScene
 
+
+var screen_size: Vector2
+var mob_hit: Node
 var velocity := Vector2.ZERO
 var collided := false
-var mob_hit: Node
 var main: Node
-var damage := 25.0  # A pistola deve dar mais dano que a smg
+var damage: float
+# As variáveis abaixo fazem parte da bala. O dano causado por ela é controlado pela classe mãe
 # Modificador do power-up Bouncy Bullets:
 var richochet_damage_modifier := 0.85  # Aumentará com upgrades. 0.85 é o valor padrão
 # Modificador do power-up Sharp Bullets:
@@ -15,17 +19,21 @@ var max_collision_count := 2  # Aumentará com upgrades. 2 é o valor sem upgrad
 
 func _ready():
 	main = get_node("/root/Main")
-	var screen_size := get_viewport_rect().size
+	screen_size = get_viewport_rect().size
 	$Despawn_no_hit_timer.start()
 	if main.sharp_bullets_active:
 		set_collision_layer_value(2, true)
-		$Trail_bullet.set_default_color(Color(255, 0, 0))
+		$Trail_bullet.set_default_color(Color(230, 0, 0))
+		$Trail_bullet.width = 8
+		var fire_bullets = fire_bullets_scene.instantiate()
+		add_child(fire_bullets)
 
 
 func _physics_process(delta):
+
 	var collision_info := move_and_collide(velocity * delta)
 	if collision_info:
-		
+
 		linear_velocity = linear_velocity.bounce(collision_info.get_normal())
 		
 		if linear_velocity.x < 0:
@@ -47,6 +55,7 @@ func _physics_process(delta):
 		# Sem upgrades, o máximo de richochetes da bala é 2
 		if collision_count > max_collision_count:
 			self.queue_free()
+
 
 
 func _mob_hit():

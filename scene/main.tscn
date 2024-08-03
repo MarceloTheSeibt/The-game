@@ -1,15 +1,14 @@
-[gd_scene load_steps=12 format=3 uid="uid://xadsabt7dyq4"]
+[gd_scene load_steps=11 format=3 uid="uid://xadsabt7dyq4"]
 
 [ext_resource type="Script" path="res://script/main.gd" id="1_i7a4b"]
 [ext_resource type="PackedScene" uid="uid://bci2jssjnyyhi" path="res://scene/room_test.tscn" id="3_2ohop"]
 [ext_resource type="PackedScene" uid="uid://dnlhvjb4dsbqm" path="res://scene/mob_zombie.tscn" id="3_anpxf"]
 [ext_resource type="PackedScene" uid="uid://c0pac7l2gdh4s" path="res://scene/pistol.tscn" id="3_m8t0f"]
-[ext_resource type="Texture2D" uid="uid://7jw8n3jpeg2g" path="res://asset/e21ccf29fe5611da0f5b7c59a30220c8.jpg" id="3_ub3s3"]
+[ext_resource type="PackedScene" uid="uid://cfynjyb8xhwwe" path="res://scene/sharp_bullets.tscn" id="4_ikvck"]
 [ext_resource type="Script" path="res://script/Camera2D.gd" id="5_sj1dq"]
 [ext_resource type="PackedScene" uid="uid://dubaka086frrj" path="res://scene/player.tscn" id="7_brui6"]
 [ext_resource type="PackedScene" uid="uid://jg3eimhmhofg" path="res://scene/hud.tscn" id="8_ct4q1"]
 [ext_resource type="PackedScene" uid="uid://ctbr1q7xj7hxc" path="res://scene/bouncy_bullets.tscn" id="9_bggxd"]
-[ext_resource type="PackedScene" uid="uid://cfynjyb8xhwwe" path="res://scene/sharp_bullets.tscn" id="10_4bkb5"]
 
 [sub_resource type="Curve2D" id="Curve2D_4ya45"]
 _data = {
@@ -21,24 +20,11 @@ point_count = 4
 script = ExtResource("1_i7a4b")
 mob_zombie_scene = ExtResource("3_anpxf")
 pistol_scene = ExtResource("3_m8t0f")
+sharp_bullets_scene = ExtResource("4_ikvck")
 bouncy_bullets_scene = ExtResource("9_bggxd")
-sharp_bullets_scene = ExtResource("10_4bkb5")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-visible = false
-self_modulate = Color(0.577703, 0.527635, 0.369913, 1)
-position = Vector2(1064, 504)
-texture = ExtResource("3_ub3s3")
-
-[node name="Zombie_spawn_timer" type="Timer" parent="."]
-wait_time = 2.0
 
 [node name="Room" parent="." instance=ExtResource("3_2ohop")]
-
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(960, 540)
-zoom = Vector2(0.85, 0.85)
-script = ExtResource("5_sj1dq")
+position = Vector2(168, 96)
 
 [node name="MobPath" type="Path2D" parent="."]
 curve = SubResource("Curve2D_4ya45")
@@ -49,7 +35,8 @@ position = Vector2(1832, -152)
 [node name="Player" parent="." instance=ExtResource("7_brui6")]
 modulate = Color(0.314316, 0.314316, 0.314316, 1)
 
-[node name="HUD" parent="." instance=ExtResource("8_ct4q1")]
+[node name="Zombie_spawn_timer" type="Timer" parent="."]
+wait_time = 2.0
 
 [node name="Bouncy_bullets_duration" type="Timer" parent="."]
 wait_time = 20.0
@@ -59,7 +46,14 @@ one_shot = true
 wait_time = 20.0
 one_shot = true
 
-[connection signal="timeout" from="Zombie_spawn_timer" to="." method="_on_zombies_spawn_timer_timeout"]
+[node name="HUD" parent="." instance=ExtResource("8_ct4q1")]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(1129, 635)
+zoom = Vector2(0.85, 0.85)
+script = ExtResource("5_sj1dq")
+
 [connection signal="player_death" from="Player" to="Camera2D" method="_on_player_player_death"]
+[connection signal="timeout" from="Zombie_spawn_timer" to="." method="_on_zombies_spawn_timer_timeout"]
 [connection signal="timeout" from="Bouncy_bullets_duration" to="." method="_on_bouncy_bullets_duration_timeout"]
 [connection signal="timeout" from="Sharp_bullets_duration" to="." method="_on_sharp_bullets_duration_timeout"]

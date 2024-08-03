@@ -1,0 +1,68 @@
+[gd_scene load_steps=4 format=3 uid="uid://dt2iohktrld2d"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8gnsd"]
+bg_color = Color(0.313726, 0, 0, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+corner_detail = 5
+shadow_size = 8
+shadow_offset = Vector2(0, 6)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x08u1"]
+bg_color = Color(1, 0, 0, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.235294, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+corner_detail = 5
+
+[sub_resource type="SystemFont" id="SystemFont_8xly2"]
+
+[node name="Health_bar" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 50.0
+offset_top = 150.0
+offset_right = 50.0
+offset_bottom = 150.0
+size_flags_horizontal = 0
+
+[node name="Progress_bar" type="ProgressBar" parent="."]
+layout_mode = 0
+offset_right = 431.0
+offset_bottom = 50.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 36
+theme_override_styles/background = SubResource("StyleBoxFlat_8gnsd")
+theme_override_styles/fill = SubResource("StyleBoxFlat_x08u1")
+value = 100.0
+show_percentage = false
+
+[node name="Label" type="Label" parent="Progress_bar"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -31.5
+offset_top = -25.0
+offset_right = 31.5
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = SubResource("SystemFont_8xly2")
+theme_override_font_sizes/font_size = 36

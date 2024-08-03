@@ -56,6 +56,7 @@ func _on_pistol_shot(bullet):
 	var pos: Vector2 = $bullet_point.get_global_position()
 	var rot: float = $bullet_point.get_global_rotation()
 	var bullet_speed := 600000
+	bullet.damage = 25.0
 	bullet.set_global_position(pos)
 	bullet.set_global_rotation(rot)
 	# Direção da bala

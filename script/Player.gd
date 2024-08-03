@@ -7,7 +7,8 @@ signal arm_left_position
 signal player_position
 signal player_death
 
-var health := 100000
+var health := 100.0
+var max_health := 100.0
 var on_death := true  # Controle da função de morte
 var speed := 275
 var screen_size: Vector2
